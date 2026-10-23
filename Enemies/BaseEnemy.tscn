@@ -9,12 +9,17 @@ size = Vector2(20, 52)
 [node name="BaseEnemy" type="CharacterBody2D" unique_id=1814614306 groups=["Enemy"]]
 scale = Vector2(2, 2)
 collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_nqv13")
+_decay = 120.0
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=143963417]
 scale = Vector2(0.14843749, 0.41406253)
 texture = ExtResource("1_rwavt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=636207314]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_nqv13")
 debug_color = Color(0.6039216, 0, 0, 0.41960785)
+
+[connection signal="ready" from="." to="." method="OnReady"]

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c15aodslnosfl"]
 
-[ext_resource type="PackedScene" uid="uid://cgek3viiletjq" path="res://LePlayer/Player.tscn" id="1_uib4f"]
-[ext_resource type="PackedScene" uid="uid://xriwlxsmsrnk" path="res://Enemies/BaseEnemy.tscn" id="2_iqcmb"]
+[ext_resource type="PackedScene" uid="uid://c7elqjdqm6c6l" path="res://LePlayer/PlayerRig.tscn" id="2_iqcmb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mgtjl"]
 size = Vector2(1931, 60)
@@ -10,7 +9,7 @@ size = Vector2(1931, 60)
 size = Vector2(256, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4usca"]
-size = Vector2(450, 20)
+size = Vector2(450, 14)
 
 [node name="TestLevels" type="Node2D" unique_id=1371392487]
 
@@ -104,19 +103,19 @@ rotation = 1.5707964
 position = Vector2(955.5, 20)
 shape = SubResource("RectangleShape2D_mgtjl")
 
-[node name="Player" parent="." unique_id=583211297 instance=ExtResource("1_uib4f")]
-position = Vector2(930, 723)
-
 [node name="OnewayPlatform" type="StaticBody2D" parent="." unique_id=338936088 groups=["OneWays"]]
 position = Vector2(760, 856)
 collision_layer = 32
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OnewayPlatform" unique_id=272952517]
-position = Vector2(215, 0)
+position = Vector2(216, -4)
 shape = SubResource("RectangleShape2D_4usca")
 one_way_collision = true
 debug_color = Color(0, 0.63324076, 0.44618058, 0.41960785)
 
-[node name="BaseEnemy" parent="." unique_id=1814614306 instance=ExtResource("2_iqcmb")]
-position = Vector2(1024, 768)
+[node name="Marker2D" type="Marker2D" parent="." unique_id=198378880]
+position = Vector2(944, 300)
+
+[node name="PlayerRig" parent="." unique_id=459224005 instance=ExtResource("2_iqcmb")]
+position = Vector2(832, 712)

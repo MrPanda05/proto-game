@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dn7pmt8gjhfk4"]
+
+[ext_resource type="PackedScene" uid="uid://xriwlxsmsrnk" path="res://Enemies/BaseEnemy.tscn" id="1_8set2"]
+[ext_resource type="PackedScene" uid="uid://7oujxghyo5uu" path="res://Commons/FiniteStateMachine/StateMachine.tscn" id="2_k77ct"]
+[ext_resource type="Resource" uid="uid://ddx5xekklev4l" path="res://Enemies/Stats/TestEnemy.tres" id="2_l8bdd"]
+[ext_resource type="Script" uid="uid://bjx3v5spqx57i" path="res://Enemies/States/HoverState.gd" id="3_s8aut"]
+
+[node name="TestEnemy" unique_id=1814614306 instance=ExtResource("1_8set2")]
+Data = ExtResource("2_l8bdd")
+
+[node name="Brain" parent="." index="2" unique_id=429959772 instance=ExtResource("2_k77ct")]
+initial_state = NodePath("HoverState")
+autoStart = false
+
+[node name="HoverState" type="Node" parent="Brain" index="0" unique_id=986682111]
+script = ExtResource("3_s8aut")

@@ -11,6 +11,7 @@ scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 35
 script = ExtResource("1_qcg35")
+pushForce = 250.0
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=217966985]
 scale = Vector2(0.14843749, 0.41406253)

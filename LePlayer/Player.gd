@@ -12,6 +12,8 @@ extends CharacterBody2D
 @export var jumpTimeToDescent: float = 0.2
 @export var variableJumpHeight: float = 75
 @export var maxJumps: int = 1
+@export var pushForce: float = 10
+
 
 @onready var _jumpVel: float = ((2.0 * jumpHeight) / jumpTimeToPeak) * -1
 @onready var _jumpGravity: float = ((-2.0 * jumpHeight) / (jumpTimeToPeak * jumpTimeToPeak)) * -1
@@ -57,7 +59,31 @@ func DetectOneWays() -> bool:
 			return true
 	return false
 
-
+#func HandleEnemyPush() -> void:
+	#_isPushingEnemy = false
+	#for i in get_slide_collision_count():
+		#var col := get_slide_collision(i)
+		#var enemy := col.get_collider() as BaseEnemy
+		#if enemy == null:
+			#continue
+		#var dir := -col.get_normal()
+		#enemy.Push(dir.normalized() * pushForce)
+		#if absf(dir.x) > 0.5 and signf(dir.x) == signf(_horizontalInput):
+			#_isPushingEnemy = true
+func HandleEnemyPush(intended: Vector2) -> void:
+	_isPushingEnemy = false
+	for i in get_slide_collision_count():
+		var col := get_slide_collision(i)
+		var enemy := col.get_collider() as BaseEnemy
+		if enemy == null:
+			continue
+		var dir := -col.get_normal()
+		var pushSpeed := intended.dot(dir)   # how fast I'm trying to walk into it
+		if pushSpeed <= 0.0:
+			continue
+		enemy.Push(dir * pushSpeed * pushForce)   # pushForce is now a multiplier, ~1.0
+		if absf(dir.x) > 0.5 and signf(dir.x) == signf(_horizontalInput):
+			_isPushingEnemy = true
 
 
 func HandleOneWays() -> void:
@@ -75,8 +101,9 @@ func _physics_process(delta: float) -> void:
 	if(_jumpInput):
 		Jump()
 	HandleOneWays()
-	
+	var intended := velocity
 	velocity.x = _horizontalInput * speed * (0.5 if _isPushingEnemy else 1.0)
 	move_and_slide()
+	HandleEnemyPush(intended)
 	_isOnOneWay = DetectOneWays()
 	

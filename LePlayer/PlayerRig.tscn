@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c7elqjdqm6c6l"]
+
+[ext_resource type="Texture2D" uid="uid://d0uide6srbo2w" path="res://icon.svg" id="1_47ucn"]
+[ext_resource type="Script" uid="uid://bfgfj5twuedkn" path="res://LePlayer/PlayerRig.gd" id="1_je4v8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a28d8"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgtjl"]
+size = Vector2(34, 88)
+
+[node name="PlayerRig" type="RigidBody2D" unique_id=459224005 groups=["Player"]]
+collision_layer = 4
+collision_mask = 35
+mass = 35.0
+physics_material_override = SubResource("PhysicsMaterial_a28d8")
+can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_je4v8")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1049500892]
+scale = Vector2(0.2615, 0.707)
+texture = ExtResource("1_47ucn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1956739146]
+shape = SubResource("RectangleShape2D_mgtjl")

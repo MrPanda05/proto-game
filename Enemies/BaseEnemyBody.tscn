@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://s30ahw4c0opb"]
+
+[ext_resource type="Script" uid="uid://j55ut6ffri3n" path="res://Enemies/BaseEnemyBody.gd" id="1_qvt2b"]
+[ext_resource type="Resource" uid="uid://ddx5xekklev4l" path="res://Enemies/Stats/TestEnemy.tres" id="2_86ts8"]
+[ext_resource type="Texture2D" uid="uid://d0uide6srbo2w" path="res://icon.svg" id="3_oxnru"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oxnru"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgtjl"]
+size = Vector2(20, 121)
+
+[node name="BaseEnemyBody" type="RigidBody2D" unique_id=1320595226 groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 7
+mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_oxnru")
+gravity_scale = 0.0
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_qvt2b")
+Data = ExtResource("2_86ts8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=29351939]
+position = Vector2(-0.5, 0)
+scale = Vector2(0.16406249, 1)
+texture = ExtResource("3_oxnru")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1172801119]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_mgtjl")
+debug_color = Color(0.9540116, 0, 0.5531309, 0.41960785)
+
+[connection signal="ready" from="." to="." method="OnStart"]
