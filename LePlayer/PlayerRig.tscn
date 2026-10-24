@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d0uide6srbo2w" path="res://icon.svg" id="1_47ucn"]
 [ext_resource type="Script" uid="uid://bfgfj5twuedkn" path="res://LePlayer/PlayerRig.gd" id="1_je4v8"]
 [ext_resource type="PackedScene" uid="uid://dx01pdu4xek54" path="res://Shooter/Shooter.tscn" id="3_rga63"]
+[ext_resource type="PackedScene" uid="uid://cnpeukp37s070" path="res://Bullets/Types/BasicBullet.tscn" id="4_cu106"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a28d8"]
 friction = 0.0
@@ -30,5 +31,6 @@ texture = ExtResource("1_47ucn")
 shape = SubResource("RectangleShape2D_mgtjl")
 
 [node name="Shooter" parent="." unique_id=806875647 instance=ExtResource("3_rga63")]
+BulletScene = ExtResource("4_cu106")
 
 [connection signal="ready" from="." to="." method="OnStart"]

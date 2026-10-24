@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cnpeukp37s070"]
+
+[ext_resource type="PackedScene" uid="uid://b8rt3b1yhhets" path="res://Bullets/BaseBullet.tscn" id="1_xic3f"]
+[ext_resource type="Script" uid="uid://dcr1x34l3ubem" path="res://Bullets/Types/BasicBullet.gd" id="2_m1oo7"]
+[ext_resource type="PackedScene" uid="uid://bjt4qk66gg8ly" path="res://Commons/Components/HurtboxComponent.tscn" id="3_236uo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gsi77"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mgtjl"]
+radius = 16.0
+
+[node name="BasicBullet" unique_id=1796345112 instance=ExtResource("1_xic3f")]
+script = ExtResource("2_m1oo7")
+speed = 450.0
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1656786958]
+shape = SubResource("CircleShape2D_gsi77")
+
+[node name="HurtboxComponent" parent="." index="2" unique_id=995218557 instance=ExtResource("3_236uo")]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0" unique_id=673801566]
+shape = SubResource("CircleShape2D_mgtjl")

@@ -8,6 +8,35 @@ extends RigidBody2D
 var desiredVelocity: Vector2 = Vector2.ZERO
 var Brain: FSM
 var _angle: float = 0.0
+@onready var _hurtBox: HurtboxComponent = $HurtboxComponent
+@onready var _hitBox: HitboxComponent = $HitboxComponent
+@onready var _healthComponent: HealthComponent = $HealthComponent
+
+@onready var _visual: Sprite2D = $Sprite2D
+## On Took damage
+func OnTookDamage(hitInfo: HitInfo):
+	print(hitInfo.damage)
+	_healthComponent.TakeDamage(hitInfo.damage)
+
+## On contact damage with player
+func OnHit(hitBox: HitboxComponent):
+	print("Ninja")
+	pass
+
+## HealthChanged
+func OnHealthChanged():
+	var fade: float = clampf(
+		_healthComponent.currentHealth / _healthComponent.maxHealth,
+		0.0,
+		1.0
+	)
+	if(fade <= .35): return
+	_visual.modulate.a = fade
+
+## On enemy death
+func OnDied():
+	queue_free()
+	print("Died")
 
 func _ready() -> void:
 	gravity_scale = 0.0
@@ -28,9 +57,13 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if target != null:
 		var wanted := (target.global_position - state.transform.origin).angle() + PI / 2
 		_angle = lerp_angle(_angle, wanted, clampf(Data.turnSpeed * state.step, 0.0, 1.0))
-	# Rotate the body (and therefore its collider), keeping the current position
 	state.transform = Transform2D(_angle, state.transform.origin)
 
 func OnStart() -> void:
 	if Brain != null:
 		Brain.StartFSM()
+	_hurtBox.connect("OnHit", OnHit)
+	_hitBox.connect("OnHit", OnTookDamage)
+	_healthComponent.connect("OnHealthChanged", OnHealthChanged)
+	_healthComponent.connect("OnDeath", OnDied)
+	_healthComponent.SetUp(30)

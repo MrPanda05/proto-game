@@ -1,3 +1,4 @@
+#DO NO USE THIS ENEMY, DUE TO NOT BEHAVING IN A GOOD WAY FOR THE PLAYER
 class_name BaseEnemy
 extends CharacterBody2D
 

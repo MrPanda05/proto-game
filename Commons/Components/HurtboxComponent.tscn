@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bjt4qk66gg8ly"]
+
+[ext_resource type="Script" uid="uid://dwkkvc04b0q7q" path="res://Commons/Components/HurtboxComponent.gd" id="1_i5h0h"]
+
+[node name="HurtboxComponent" type="Area2D" unique_id=995218557]
+script = ExtResource("1_i5h0h")
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c15aodslnosfl"]
 
 [ext_resource type="PackedScene" uid="uid://c7elqjdqm6c6l" path="res://LePlayer/PlayerRig.tscn" id="2_iqcmb"]
+[ext_resource type="PackedScene" uid="uid://5cwu0a4dg53u" path="res://Enemies/Examples/TestEnemyRigid.tscn" id="2_y1yrn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mgtjl"]
 size = Vector2(1931, 60)
@@ -119,3 +120,7 @@ position = Vector2(944, 300)
 
 [node name="PlayerRig" parent="." unique_id=459224005 instance=ExtResource("2_iqcmb")]
 position = Vector2(832, 712)
+
+[node name="TestEnemyRigid" parent="." unique_id=1320595226 node_paths=PackedStringArray("target") instance=ExtResource("2_y1yrn")]
+position = Vector2(940, 150)
+target = NodePath("../PlayerRig")

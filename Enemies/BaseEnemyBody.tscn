@@ -3,12 +3,21 @@
 [ext_resource type="Script" uid="uid://j55ut6ffri3n" path="res://Enemies/BaseEnemyBody.gd" id="1_qvt2b"]
 [ext_resource type="Resource" uid="uid://ddx5xekklev4l" path="res://Enemies/Stats/TestEnemy.tres" id="2_86ts8"]
 [ext_resource type="Texture2D" uid="uid://d0uide6srbo2w" path="res://icon.svg" id="3_oxnru"]
+[ext_resource type="PackedScene" uid="uid://csuiq0w401ijs" path="res://Commons/Components/HealthComponent.tscn" id="4_825eh"]
+[ext_resource type="PackedScene" uid="uid://bjt4qk66gg8ly" path="res://Commons/Components/HurtboxComponent.tscn" id="5_u6wwo"]
+[ext_resource type="PackedScene" uid="uid://bmpmrsten4786" path="res://Commons/Components/HitboxComponent.tscn" id="6_8pesl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oxnru"]
 friction = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mgtjl"]
 size = Vector2(20, 121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4usca"]
+size = Vector2(25, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pesl"]
+size = Vector2(28, 129)
 
 [node name="BaseEnemyBody" type="RigidBody2D" unique_id=1320595226 groups=["Enemy"]]
 collision_layer = 2
@@ -31,5 +40,24 @@ texture = ExtResource("3_oxnru")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_mgtjl")
 debug_color = Color(0.9540116, 0, 0.5531309, 0.41960785)
+
+[node name="HealthComponent" parent="." unique_id=920714907 instance=ExtResource("4_825eh")]
+
+[node name="HurtboxComponent" parent="." unique_id=995218557 instance=ExtResource("5_u6wwo")]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1099820645]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_4usca")
+
+[node name="HitboxComponent" parent="." unique_id=709588686 instance=ExtResource("6_8pesl")]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=915169655]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_8pesl")
+debug_color = Color(0, 0.63378006, 0.4401745, 0.41960785)
 
 [connection signal="ready" from="." to="." method="OnStart"]
