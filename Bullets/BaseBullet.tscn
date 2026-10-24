@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b8rt3b1yhhets"]
+
+[ext_resource type="Texture2D" uid="uid://d0uide6srbo2w" path="res://icon.svg" id="1_gcn5v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mgtjl"]
+radius = 16.0
+
+[node name="BaseBullet" type="CharacterBody2D" unique_id=1796345112]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=408559351]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_gcn5v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1656786958]
+shape = SubResource("CircleShape2D_mgtjl")

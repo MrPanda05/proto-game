@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d0uide6srbo2w" path="res://icon.svg" id="1_47ucn"]
 [ext_resource type="Script" uid="uid://bfgfj5twuedkn" path="res://LePlayer/PlayerRig.gd" id="1_je4v8"]
+[ext_resource type="PackedScene" uid="uid://dx01pdu4xek54" path="res://Shooter/Shooter.tscn" id="3_rga63"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a28d8"]
 friction = 0.0
@@ -19,6 +20,7 @@ continuous_cd = 2
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_je4v8")
+playerStates = 1
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1049500892]
 scale = Vector2(0.2615, 0.707)
@@ -26,3 +28,7 @@ texture = ExtResource("1_47ucn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1956739146]
 shape = SubResource("RectangleShape2D_mgtjl")
+
+[node name="Shooter" parent="." unique_id=806875647 instance=ExtResource("3_rga63")]
+
+[connection signal="ready" from="." to="." method="OnStart"]

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dx01pdu4xek54"]
+
+[ext_resource type="Script" uid="uid://c4q8abllavwel" path="res://Shooter/Shooter.gd" id="1_eb6ym"]
+[ext_resource type="Texture2D" uid="uid://d0uide6srbo2w" path="res://icon.svg" id="2_o6pav"]
+
+[node name="Shooter" type="Node2D" unique_id=806875647 node_paths=PackedStringArray("_wandVisual", "_wandExitPoint")]
+script = ExtResource("1_eb6ym")
+_wandVisual = NodePath("WandVisual")
+_wandExitPoint = NodePath("WandVisual/Marker2D")
+fireRate = 0.5
+
+[node name="WandVisual" type="Sprite2D" parent="." unique_id=1589346860]
+position = Vector2(8, 0)
+scale = Vector2(0.12499999, 0.6875)
+texture = ExtResource("2_o6pav")
+
+[node name="Marker2D" type="Marker2D" parent="WandVisual" unique_id=1862721802]
+position = Vector2(0, -46.545456)
+
+[node name="FirerateTimer" type="Timer" parent="." unique_id=1657694820]
+one_shot = true
+
+[connection signal="timeout" from="FirerateTimer" to="." method="OnFirerateTimerTimeout"]

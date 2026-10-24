@@ -1,6 +1,8 @@
 class_name PlayerRig
 extends RigidBody2D
 
+enum States { PAUSED, PLAYING, DEAD }
+
 @export var speed: float = 250
 ## Default gravity when falling platform
 @export var defaultGravity: float = 1500
@@ -12,11 +14,16 @@ extends RigidBody2D
 @export var jumpTimeToDescent: float = 0.2
 @export var variableJumpHeight: float = 75
 @export var maxJumps: int = 1
+@export var fireRate: float = 0.5
+
+@export var playerStates: States
 
 @onready var _jumpVel: float = ((2.0 * jumpHeight) / jumpTimeToPeak) * -1
 @onready var _jumpGravity: float = ((-2.0 * jumpHeight) / (jumpTimeToPeak * jumpTimeToPeak)) * -1
 @onready var _fallGravity: float = ((-2.0 * jumpHeight) / (jumpTimeToDescent * jumpTimeToDescent)) * -1
 @onready var _variableJumpGravity: float = (_jumpVel * _jumpVel) / (2 * variableJumpHeight)
+
+@onready var Wand: Shooter = $Shooter
 
 var _horizontalInput: float = 0
 var _jumpInput: bool = false
@@ -26,6 +33,8 @@ var _jumpCount: int = 0
 var _isOnFloor: bool = false
 var _isOnOneWay: bool = false
 var _hasPressedDown: bool = false
+var _autoShoot: bool = false
+var _shootInput: bool = false
 
 const ONE_WAY_LAYER := 6
 const FLOOR_DOT := 0.7   # how upward a contact normal must be to count as floor
@@ -43,10 +52,13 @@ func _ready() -> void:
 
 func GarderInputs() -> void:
 	_horizontalInput = Input.get_axis("Left", "Right")
-	if Input.is_action_just_pressed("Jump"):
+	if(Input.is_action_just_pressed("Jump")):
 		_jumpInput = true
 	_holdJumpInput = Input.is_action_pressed("Jump")
 	_hasPressedDown = Input.is_action_pressed("Down")
+	_shootInput = Input.is_action_pressed("Shoot")
+	if(Input.is_action_just_pressed("AutoAim")):
+		_autoShoot = true if !_autoShoot else false
 
 
 func GetGravity(vy: float) -> float:
@@ -62,13 +74,26 @@ func HandleOneWays() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	GarderInputs()
-	HandleOneWays()
+	match playerStates:
+		States.PLAYING:
+			GarderInputs()
+			HandleOneWays()
+			HandleWand()
+		States.PAUSED:
+			pass
+		States.DEAD:
+			pass
 
 
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+func HandleWand() -> void:
+	var dir := get_global_mouse_position()
+	Wand.MoveShoot(dir);
+	if(_autoShoot || _shootInput):
+		Wand.Shoot(dir)
+
+
+func Movement(state: PhysicsDirectBodyState2D) -> void:
 	var vel := state.linear_velocity
-
 	# Floor and one-way detection from this step's contacts
 	_isOnFloor = false
 	_isOnOneWay = false
@@ -99,3 +124,16 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	vel.x = _horizontalInput * speed
 
 	state.linear_velocity = vel
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	match playerStates:
+		States.PLAYING:
+			Movement(state)
+		States.PAUSED:
+			pass
+		States.DEAD:
+			pass
+
+
+func OnStart() -> void:
+	Wand.SetUpShooter(fireRate)
