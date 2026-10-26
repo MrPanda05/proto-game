@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dbcoaqbi80imo"]
+
+[ext_resource type="Script" uid="uid://dhaujprh42ra5" path="res://Commons/Debug/DebugVectorDraw.gd" id="1_jt0ko"]
+
+[node name="DebugVectorDraw" type="Node2D" unique_id=59416699]
+script = ExtResource("1_jt0ko")

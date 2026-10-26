@@ -4,10 +4,6 @@
 
 [resource]
 script = ExtResource("1_2xcr2")
-hoverOffset = Vector2(0, -600)
 speed = 250.0
-maxHealth = 10.0
-contactDamage = 1.0
-fireRate = 0.1
-desiredHeight = 300.0
+desiredHeight = 450.0
 metadata/_custom_type_script = "uid://dpm8l18q8v5ri"

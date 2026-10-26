@@ -2,13 +2,13 @@ class_name EnemyResource
 extends Resource
 
 
-@export var sprite: Texture
-@export var hoverOffset := Vector2(0, -200) 
-@export var speed: float
-@export var maxHealth: float
-@export var contactDamage: float
-@export var fireRate: float
-@export var desiredHeight: float
+@export var sprite: Texture = null
+@export var hoverOffset : Vector2 = Vector2(0, -200) 
+@export var speed: float = 30
+@export var maxHealth: float = 10
+@export var contactDamage: float = 1
+@export var fireRate: float = 0.1
+@export var desiredHeight: float = 300
 @export var spread : float = 40.0                     
 @export var slow_radius : float = 80.0                
 @export var stop_radius : float = 6.0                 

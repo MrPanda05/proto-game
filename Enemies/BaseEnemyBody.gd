@@ -6,6 +6,7 @@ extends RigidBody2D
 
 
 var desiredVelocity: Vector2 = Vector2.ZERO
+var desiredGlobalPos: Vector2 = Vector2.ZERO
 var Brain: FSM
 var _angle: float = 0.0
 @onready var _hurtBox: HurtboxComponent = $HurtboxComponent
@@ -51,7 +52,10 @@ func _ready() -> void:
 		printerr("NO BRAIN")
 
 func _physics_process(_delta: float) -> void:
+	queue_redraw()
+	print(desiredGlobalPos)
 	apply_central_force((desiredVelocity - linear_velocity) * Data.steerStrength * mass)
+
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if target != null:
