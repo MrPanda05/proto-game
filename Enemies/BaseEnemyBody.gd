@@ -12,8 +12,10 @@ var _angle: float = 0.0
 @onready var _hurtBox: HurtboxComponent = $HurtboxComponent
 @onready var _hitBox: HitboxComponent = $HitboxComponent
 @onready var _healthComponent: HealthComponent = $HealthComponent
-
 @onready var _visual: Sprite2D = $Sprite2D
+
+signal OnDeath
+
 ## On Took damage
 func OnTookDamage(hitInfo: HitInfo):
 	print(hitInfo.damage)
@@ -36,6 +38,7 @@ func OnHealthChanged():
 
 ## On enemy death
 func OnDied():
+	OnDeath.emit()
 	queue_free()
 	print("Died")
 

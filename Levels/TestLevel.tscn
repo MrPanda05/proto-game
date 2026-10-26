@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c15aodslnosfl"]
 
 [ext_resource type="PackedScene" uid="uid://c7elqjdqm6c6l" path="res://LePlayer/PlayerRig.tscn" id="2_iqcmb"]
+[ext_resource type="PackedScene" uid="uid://cljrt4netcee4" path="res://Waves/WaveManager.tscn" id="2_y1yrn"]
+[ext_resource type="Script" uid="uid://b02jmc3vrje8k" path="res://Upgrades/UpgradeCanvas.gd" id="3_y1yrn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mgtjl"]
 size = Vector2(1931, 60)
@@ -119,3 +121,18 @@ position = Vector2(944, 300)
 
 [node name="PlayerRig" parent="." unique_id=459224005 instance=ExtResource("2_iqcmb")]
 position = Vector2(832, 712)
+
+[node name="WaveManager" parent="." unique_id=664645533 instance=ExtResource("2_y1yrn")]
+position = Vector2(951, 298)
+
+[node name="UpgradeCanvas" type="CanvasLayer" parent="." unique_id=2054994791]
+script = ExtResource("3_y1yrn")
+
+[node name="Button" type="Button" parent="UpgradeCanvas" unique_id=354265569]
+offset_left = 904.0
+offset_top = 512.0
+offset_right = 1024.0
+offset_bottom = 543.0
+text = "Upgrade nigga"
+
+[connection signal="button_down" from="UpgradeCanvas/Button" to="UpgradeCanvas" method="OnButtonButtonDown"]

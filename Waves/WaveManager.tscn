@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cljrt4netcee4"]
+
+[ext_resource type="Script" uid="uid://d1kiskl1h3nne" path="res://Waves/WaveManager.gd" id="1_5ek8w"]
+[ext_resource type="Script" uid="uid://beycrt3omrveu" path="res://Waves/SpawnManager.gd" id="2_ts7pw"]
+[ext_resource type="PackedScene" uid="uid://5cwu0a4dg53u" path="res://Enemies/Examples/TestEnemyRigid.tscn" id="3_hn5xa"]
+
+[node name="WaveManager" type="Node2D" unique_id=664645533 groups=["WaveManager"]]
+script = ExtResource("1_5ek8w")
+
+[node name="SpawnManager" type="Node2D" parent="." unique_id=110599959]
+script = ExtResource("2_ts7pw")
+_testEnemy = ExtResource("3_hn5xa")
