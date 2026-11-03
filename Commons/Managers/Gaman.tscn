@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cshe24gba3emm"]
+
+[ext_resource type="Script" uid="uid://b247osyacv4tr" path="res://Commons/Managers/GameManagerController.gd" id="1_tpb48"]
+[ext_resource type="PackedScene" uid="uid://dfntqlsbijqb8" path="res://Commons/Managers/GameplayBus.tscn" id="2_du5k3"]
+
+[node name="GameManagerController" type="Node" unique_id=1279892523]
+script = ExtResource("1_tpb48")
+_gamePlayBusScene = ExtResource("2_du5k3")
+
+[node name="PlayerUpgrades" type="Node" parent="." unique_id=201755389]
+editor_description = "All players held upgrades"
+
+[node name="PlayerPickups" type="Node" parent="." unique_id=878929503]
+editor_description = "What weapon, hats player picked up"

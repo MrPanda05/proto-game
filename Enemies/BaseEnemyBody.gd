@@ -1,7 +1,7 @@
 class_name BaseEnemyBody
 extends RigidBody2D
 
-@export var Data: EnemyResource
+@export var Data: EnemyStatsComponents
 @export var target: Node2D
 
 
@@ -56,7 +56,6 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	queue_redraw()
-	print(desiredGlobalPos)
 	apply_central_force((desiredVelocity - linear_velocity) * Data.steerStrength * mass)
 
 
@@ -73,4 +72,4 @@ func OnStart() -> void:
 	_hitBox.connect("OnHit", OnTookDamage)
 	_healthComponent.connect("OnHealthChanged", OnHealthChanged)
 	_healthComponent.connect("OnDeath", OnDied)
-	_healthComponent.SetUp(30)
+	_healthComponent.SetUp(Data.maxHealth)

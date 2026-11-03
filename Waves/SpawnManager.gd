@@ -34,3 +34,4 @@ func Spawn(currentWave: int):
 		add_child(instance)
 		_currentEnemies += 1
 		instance.connect("OnDeath", OnEnemyDeath)
+		instance._healthComponent.SetUp(instance._healthComponent.maxHealth * _waveManager.currentWave)

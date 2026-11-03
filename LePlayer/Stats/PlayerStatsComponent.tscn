@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d0keqspt04wdy"]
+
+[ext_resource type="PackedScene" uid="uid://c7ullrpfaw7q6" path="res://Commons/Components/StatsComponent.tscn" id="1_pu55f"]
+[ext_resource type="Script" uid="uid://o5er4tfajdv4" path="res://LePlayer/Stats/PlayerStatsComponent.gd" id="2_hdwnq"]
+
+[node name="PlayerStatsComponent" unique_id=1060335031 instance=ExtResource("1_pu55f")]
+script = ExtResource("2_hdwnq")

@@ -3,28 +3,15 @@ extends RigidBody2D
 
 enum States { PAUSED, PLAYING, DEAD }
 
-@export var speed: float = 250
-## Default gravity when falling platform
-@export var defaultGravity: float = 1500
-## The max height of the jump
-@export var jumpHeight: float = 150
-## The time to reach the top height of the jump
-@export var jumpTimeToPeak: float = 0.25
-## The time to reach the ground
-@export var jumpTimeToDescent: float = 0.2
-@export var variableJumpHeight: float = 75
-@export var maxJumps: int = 1
-@export var fireRate: float = 0.5
-
 @export var playerStates: States
-
-@onready var _jumpVel: float = ((2.0 * jumpHeight) / jumpTimeToPeak) * -1
-@onready var _jumpGravity: float = ((-2.0 * jumpHeight) / (jumpTimeToPeak * jumpTimeToPeak)) * -1
-@onready var _fallGravity: float = ((-2.0 * jumpHeight) / (jumpTimeToDescent * jumpTimeToDescent)) * -1
-@onready var _variableJumpGravity: float = (_jumpVel * _jumpVel) / (2 * variableJumpHeight)
-
 @onready var Wand: Shooter = $Shooter
+@onready var Stats: PlayerStatsComponent = $PlayerStatsComponent
+@onready var HealthComp: HealthComponent = $HealthComponent
 
+var _jumpVel: float = 0
+var _jumpGravity: float = 0
+var _fallGravity: float = 0
+var _variableJumpGravity: float = 0
 var _horizontalInput: float = 0
 var _jumpInput: bool = false
 var _holdJumpInput: bool = false
@@ -41,6 +28,8 @@ const FLOOR_DOT := 0.7   # how upward a contact normal must be to count as floor
 
 
 func _ready() -> void:
+	HealthComp.SetUp(Stats.maxHealth)
+	RecomputeJump()
 	gravity_scale = 0.0                       # we apply our own gravity
 	lock_rotation = true                      # player must not tumble
 	can_sleep = false
@@ -48,7 +37,17 @@ func _ready() -> void:
 	linear_damp = 0.0                         # no drag, we control velocity directly
 	contact_monitor = true                    # needed to read contacts (floor detection)
 	max_contacts_reported = 8
+	GameManager.GameEventBus.OnUpgradePicked.connect(PickUpgrade)
+	Stats.onChanged.connect(RecomputeJump)
 
+func RecomputeJump():
+	_jumpVel= ((2.0 * Stats.jumpHeight) / Stats.jumpToPeak) * -1
+	_jumpGravity= ((-2.0 * Stats.jumpHeight) / (Stats.jumpToPeak * Stats.jumpToPeak)) * -1
+	_fallGravity= ((-2.0 * Stats.jumpHeight) / (Stats.jumpTimeToGround * Stats.jumpTimeToGround)) * -1
+	_variableJumpGravity = (_jumpVel * _jumpVel) / (2 * Stats.variableJumpHeight)
+
+func PickUpgrade():
+	playerStates = States.PAUSED
 
 func GarderInputs() -> void:
 	_horizontalInput = Input.get_axis("Left", "Right")
@@ -79,6 +78,7 @@ func _physics_process(_delta: float) -> void:
 			GarderInputs()
 			HandleOneWays()
 			HandleWand()
+			pass
 		States.PAUSED:
 			pass
 		States.DEAD:
@@ -90,7 +90,6 @@ func HandleWand() -> void:
 	Wand.MoveShoot(dir);
 	if(_autoShoot || _shootInput):
 		Wand.Shoot(dir)
-
 
 func Movement(state: PhysicsDirectBodyState2D) -> void:
 	var vel := state.linear_velocity
@@ -114,14 +113,14 @@ func Movement(state: PhysicsDirectBodyState2D) -> void:
 
 	# Jump
 	if _jumpInput:
-		if _jumpCount < maxJumps:
+		if _jumpCount < Stats.maxJumps:
 			vel.y = _jumpVel
 			_hasJumped = true
 			_jumpCount += 1
 		_jumpInput = false
 
 	# Horizontal movement
-	vel.x = _horizontalInput * speed
+	vel.x = _horizontalInput * Stats.speed
 
 	state.linear_velocity = vel
 
@@ -129,11 +128,13 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	match playerStates:
 		States.PLAYING:
 			Movement(state)
+			pass
 		States.PAUSED:
+			state.linear_velocity = Vector2.ZERO
 			pass
 		States.DEAD:
 			pass
 
 
 func OnStart() -> void:
-	Wand.SetUpShooter(fireRate)
+	Wand.SetUpShooter(Stats.fireRate)

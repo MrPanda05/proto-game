@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://d033mn56a3j5k"]
+
+[ext_resource type="Texture2D" uid="uid://ce7dpb88id1n3" path="res://3.png" id="1_dr4oc"]
+
+[node name="UpgradeBox" type="PanelContainer" unique_id=13141202]
+custom_minimum_size = Vector2(0, 450)
+anchors_preset = -1
+offset_right = 193.0
+offset_bottom = 384.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="." unique_id=439964217]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=774916574]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1361691412]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="UpgradeName" type="Label" parent="MarginContainer/VBoxContainer" unique_id=457728741]
+layout_mode = 2
+size_flags_vertical = 6
+text = "UpgradeName"
+horizontal_alignment = 1
+
+[node name="UpgradeImage" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1264799888]
+custom_minimum_size = Vector2(200, 200)
+custom_maximum_size = Vector2(200, 300)
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("1_dr4oc")
+expand_mode = 1
+
+[node name="UpgradeDescriptioon" type="Label" parent="MarginContainer/VBoxContainer" unique_id=926379700]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Helosdfsdfsfsdfs
+dfdfdsfsdf
+
+sdfsdfsdfsdf"
+horizontal_alignment = 1

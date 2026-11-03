@@ -2,23 +2,25 @@ class_name WaveManager
 extends Node2D
 
 
-var currentWave: int = 0
+var currentWave: int = 1
 
 signal OnWaveStarted(wave: int)
 signal OnWaveEnded
 
+func _ready() -> void:
+	GameManager.GameEventBus.OnGameStart.connect(StartWave)
 
 func StartWave():
 	print("Starting wave")
 	OnWaveStarted.emit(currentWave)
+	GameManager.GameEventBus.OnWaveStarted.emit(currentWave)
 
 func EndCurrentWave():
 	currentWave += 1
 	OnWaveEnded.emit()
+	GameManager.GameEventBus.OnWaveEnded.emit()
 
 func NextWave():
 	OnWaveStarted.emit(currentWave)
+	GameManager.GameEventBus.OnWaveStarted.emit(currentWave)
 	print("new wave")
-
-func _ready() -> void:
-	StartWave()

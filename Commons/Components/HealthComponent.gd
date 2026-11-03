@@ -6,6 +6,7 @@ extends Node2D
 
 signal OnDeath
 signal OnHealthChanged
+signal OnMaxHealthChanged
 
 func SetUp(newMaxHealth: float) -> void:
 	maxHealth = newMaxHealth

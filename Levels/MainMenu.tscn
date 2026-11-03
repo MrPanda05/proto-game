@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dn3i07hjhfikc"]
+
+[ext_resource type="Script" uid="uid://dj7xo0yf2y485" path="res://Levels/MainMenu.gd" id="1_yw2i3"]
+
+[node name="MainMenu" type="Node2D" unique_id=380776219]
+script = ExtResource("1_yw2i3")
+
+[node name="Button" type="Button" parent="." unique_id=477318141]
+offset_left = 437.0
+offset_top = 268.0
+offset_right = 1568.0
+offset_bottom = 792.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Start
+"
+
+[connection signal="button_down" from="Button" to="." method="OnButtonButtonDown"]

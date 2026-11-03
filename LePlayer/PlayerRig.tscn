@@ -4,12 +4,20 @@
 [ext_resource type="Script" uid="uid://bfgfj5twuedkn" path="res://LePlayer/PlayerRig.gd" id="1_je4v8"]
 [ext_resource type="PackedScene" uid="uid://dx01pdu4xek54" path="res://Shooter/Shooter.tscn" id="3_rga63"]
 [ext_resource type="PackedScene" uid="uid://cnpeukp37s070" path="res://Bullets/Types/BasicBullet.tscn" id="4_cu106"]
+[ext_resource type="PackedScene" uid="uid://d0keqspt04wdy" path="res://LePlayer/Stats/PlayerStatsComponent.tscn" id="5_nkmgg"]
+[ext_resource type="Resource" uid="uid://b748vkg5vu6md" path="res://LePlayer/Stats/PlayerStats.tres" id="6_b5mcu"]
+[ext_resource type="PackedScene" uid="uid://csuiq0w401ijs" path="res://Commons/Components/HealthComponent.tscn" id="7_v4b04"]
+[ext_resource type="Theme" uid="uid://ctcwig8mijnyb" path="res://Themes/HealthSliderTheme.tres" id="8_2yrgb"]
+[ext_resource type="Script" uid="uid://cckfpfxh6pi5u" path="res://Commons/UI/HealthUI.gd" id="8_q6m1s"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a28d8"]
 friction = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mgtjl"]
 size = Vector2(34, 88)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4b04"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="PlayerRig" type="RigidBody2D" unique_id=459224005 groups=["Player"]]
 collision_layer = 4
@@ -32,5 +40,63 @@ shape = SubResource("RectangleShape2D_mgtjl")
 
 [node name="Shooter" parent="." unique_id=806875647 instance=ExtResource("3_rga63")]
 BulletScene = ExtResource("4_cu106")
+
+[node name="PlayerStatsComponent" parent="." unique_id=1060335031 instance=ExtResource("5_nkmgg")]
+referenceStats = ExtResource("6_b5mcu")
+
+[node name="HealthComponent" parent="." unique_id=920714907 instance=ExtResource("7_v4b04")]
+
+[node name="PlayerUI" type="CanvasLayer" parent="." unique_id=1130491507]
+follow_viewport_enabled = true
+
+[node name="Health" type="Control" parent="PlayerUI" unique_id=1396807403 node_paths=PackedStringArray("_healthSlider", "_healthValues", "_healthComponent")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_q6m1s")
+_healthSlider = NodePath("MarginContainer/PanelContainer/HSlider")
+_healthValues = NodePath("MarginContainer/PanelContainer/HSlider/Label")
+_healthComponent = NodePath("../../HealthComponent")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Health" unique_id=707424161]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 64.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 50
+
+[node name="PanelContainer" type="PanelContainer" parent="PlayerUI/Health/MarginContainer" unique_id=601918774]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4b04")
+
+[node name="HSlider" type="HSlider" parent="PlayerUI/Health/MarginContainer/PanelContainer" unique_id=771688623]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("8_2yrgb")
+max_value = 10.0
+value = 10.0
+editable = false
+
+[node name="Label" type="Label" parent="PlayerUI/Health/MarginContainer/PanelContainer/HSlider" unique_id=559206450]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.166667
+offset_right = -11.0
+offset_bottom = 11.166667
+grow_horizontal = 2
+grow_vertical = 2
+text = "100/100"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [connection signal="ready" from="." to="." method="OnStart"]

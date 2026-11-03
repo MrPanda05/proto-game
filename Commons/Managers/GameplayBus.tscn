@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dfntqlsbijqb8"]
+
+[ext_resource type="Script" uid="uid://cj6py63wdr535" path="res://Commons/Managers/GameplayBus.gd" id="1_hpm1b"]
+
+[node name="GameplayBus" type="Node" unique_id=63059853]
+script = ExtResource("1_hpm1b")

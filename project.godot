@@ -13,13 +13,14 @@ config_version=5
 config/name="ProtoGame"
 config/description="Prototipo"
 config/tags=PackedStringArray("2d", "utfpr")
-run/main_scene="uid://c15aodslnosfl"
+run/main_scene="uid://dn3i07hjhfikc"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 DebugVectorDraw="*uid://dbcoaqbi80imo"
+GameManager="*uid://cshe24gba3emm"
 
 [display]
 
@@ -43,6 +44,10 @@ OneWays="One ways platform"
 Player=""
 Enemy=""
 WaveManager=""
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 

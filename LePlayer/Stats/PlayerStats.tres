@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PlayerStats" format=3 uid="uid://b748vkg5vu6md"]
+
+[ext_resource type="Script" uid="uid://cnqq4tsv61fa5" path="res://LePlayer/Stats/PlayerStats.gd" id="1_43i43"]
+
+[resource]
+script = ExtResource("1_43i43")
+jumpHeight = 150.0
+variableJumpHeight = 75.0
+maxJumps = 1
+jumpToPeak = 0.25
+jumpTimeToGround = 0.2
+speed = 250.0
+maxHealth = 50.0
+fireRate = 0.5
+metadata/_custom_type_script = "uid://cnqq4tsv61fa5"

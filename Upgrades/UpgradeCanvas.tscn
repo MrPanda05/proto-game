@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://be5ufkj16jhna"]
+
+[ext_resource type="Script" uid="uid://b02jmc3vrje8k" path="res://Upgrades/UpgradeCanvas.gd" id="1_nb66i"]
+[ext_resource type="PackedScene" uid="uid://d033mn56a3j5k" path="res://Upgrades/UpgradeBox.tscn" id="2_6y0dh"]
+[ext_resource type="PackedScene" uid="uid://bm1suo0cbvpym" path="res://Upgrades/RerollButton.tscn" id="3_5ivdn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ivdn"]
+bg_color = Color(0.023529412, 0.023529412, 0.023529412, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6y0dh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="UpgradeCanvas" type="CanvasLayer" unique_id=1014691260]
+script = ExtResource("1_nb66i")
+
+[node name="Panel" type="Panel" parent="." unique_id=966017931]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ivdn")
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel" unique_id=2003236291]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6y0dh")
+
+[node name="HBoxContainer" type="GridContainer" parent="Panel/PanelContainer" unique_id=67121530]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 5
+
+[node name="Panel" parent="Panel/PanelContainer/HBoxContainer" unique_id=13141202 instance=ExtResource("2_6y0dh")]
+layout_mode = 2
+
+[node name="Panel2" parent="Panel/PanelContainer/HBoxContainer" unique_id=540075512 instance=ExtResource("2_6y0dh")]
+layout_mode = 2
+
+[node name="Panel3" parent="Panel/PanelContainer/HBoxContainer" unique_id=1021509624 instance=ExtResource("2_6y0dh")]
+layout_mode = 2
+
+[node name="Panel4" parent="Panel/PanelContainer/HBoxContainer" unique_id=862257767 instance=ExtResource("2_6y0dh")]
+layout_mode = 2
+
+[node name="RerollButton" parent="Panel/PanelContainer/HBoxContainer" unique_id=1407519083 instance=ExtResource("3_5ivdn")]
+layout_mode = 2
