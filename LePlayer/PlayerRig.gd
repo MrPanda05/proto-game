@@ -37,8 +37,10 @@ func _ready() -> void:
 	linear_damp = 0.0                         # no drag, we control velocity directly
 	contact_monitor = true                    # needed to read contacts (floor detection)
 	max_contacts_reported = 8
-	GameManager.GameEventBus.OnUpgradePicked.connect(PickUpgrade)
 	Stats.onChanged.connect(RecomputeJump)
+	GameManager.GameEventBus.OnWaveEnded.connect(PausePlayer)
+	GameManager.GameEventBus.OnUpgradePicked.connect(ReturnPlayer)
+	HealthComp.OnDeath.connect(PlayerDeath)
 
 func RecomputeJump():
 	_jumpVel= ((2.0 * Stats.jumpHeight) / Stats.jumpToPeak) * -1
@@ -46,8 +48,14 @@ func RecomputeJump():
 	_fallGravity= ((-2.0 * Stats.jumpHeight) / (Stats.jumpTimeToGround * Stats.jumpTimeToGround)) * -1
 	_variableJumpGravity = (_jumpVel * _jumpVel) / (2 * Stats.variableJumpHeight)
 
-func PickUpgrade():
+func PausePlayer():
 	playerStates = States.PAUSED
+
+func ReturnPlayer():
+	playerStates = States.PLAYING
+	
+func PlayerDeath():
+	playerStates = States.DEAD
 
 func GarderInputs() -> void:
 	_horizontalInput = Input.get_axis("Left", "Right")

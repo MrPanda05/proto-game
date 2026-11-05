@@ -9,6 +9,7 @@ signal OnWaveEnded
 
 func _ready() -> void:
 	GameManager.GameEventBus.OnGameStart.connect(StartWave)
+	GameManager.GameEventBus.OnUpgradePicked.connect(NextWave)
 
 func StartWave():
 	print("Starting wave")

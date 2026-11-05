@@ -3,13 +3,31 @@ extends CanvasLayer
 
 
 @onready var _waveManager: WaveManager = $"../WaveManager"
+@onready var _rerollButton: RerollButton = $Panel/PanelContainer/HBoxContainer/RerollButton
+var _allUpgrades: Array[UpgradeBox]
 
 func _ready() -> void:
 	if(_waveManager == null): return
-	_waveManager.connect("OnWaveEnded", ShowUpgrades)
 	visible = false
-
+	_waveManager.OnWaveEnded.connect(ShowUpgrades)
+	_rerollButton.OnRerollClicked.connect(RedoUpgrade)
+	FindUpgradeCards()
 
 func ShowUpgrades():
-	GameManager.GameEventBus.OnUpgradePicked.emit()
 	visible = true
+
+func UpgradedPicked():
+	GameManager.GameEventBus.OnUpgradePicked.emit()
+	visible = false
+
+func RedoUpgrade():
+	print("Get other upgrades")
+	pass
+
+func FindUpgradeCards():
+	if(_allUpgrades.size() != 0):
+		for card in _allUpgrades:
+			card.OnUpgradePicked.disconnect(UpgradedPicked)
+	_allUpgrades.assign(find_children("*", "UpgradeBox", true, false))
+	for card in _allUpgrades:
+		card.OnUpgradePicked.connect(UpgradedPicked)

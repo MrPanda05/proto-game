@@ -7,5 +7,4 @@ signal OnGameStart
 signal OnGameOver
 signal OnWaveStarted(currentWave: int)
 signal OnWaveEnded
-signal OnUpgradeChoose
 signal OnUpgradePicked

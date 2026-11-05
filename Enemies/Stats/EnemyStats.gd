@@ -14,9 +14,13 @@ extends BaseStats
 	set(value):
 		desiredHeight = value
 		emit_changed()
-@export var spread: float = 40.0:
+@export var spreadX: float = 40.0:
 	set(value):
-		spread = value
+		spreadX = value
+		emit_changed()
+@export var spreadY: float = 40.0:
+	set(value):
+		spreadY = value
 		emit_changed()
 @export var slow_radius: float = 80.0:
 	set(value):
