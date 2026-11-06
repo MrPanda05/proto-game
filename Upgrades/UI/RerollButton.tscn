@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bm1suo0cbvpym"]
 
 [ext_resource type="Texture2D" uid="uid://d0uide6srbo2w" path="res://icon.svg" id="1_af8q4"]
-[ext_resource type="Script" uid="uid://5d15idh07aoi" path="res://Upgrades/RerollButton.gd" id="1_f4oce"]
+[ext_resource type="Script" uid="uid://5d15idh07aoi" path="res://Upgrades/UI/RerollButton.gd" id="1_f4oce"]
 
 [node name="RerollButton" type="PanelContainer" unique_id=1407519083]
 custom_minimum_size = Vector2(0, 450)

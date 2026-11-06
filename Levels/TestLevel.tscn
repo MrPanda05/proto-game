@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dio27s3i1cmoa" path="res://Levels/LevelLoader.gd" id="1_jyvk6"]
 [ext_resource type="PackedScene" uid="uid://c7elqjdqm6c6l" path="res://LePlayer/PlayerRig.tscn" id="2_iqcmb"]
 [ext_resource type="PackedScene" uid="uid://cljrt4netcee4" path="res://Waves/WaveManager.tscn" id="2_y1yrn"]
-[ext_resource type="PackedScene" uid="uid://be5ufkj16jhna" path="res://Upgrades/UpgradeCanvas.tscn" id="3_y1yrn"]
+[ext_resource type="PackedScene" uid="uid://be5ufkj16jhna" path="res://Upgrades/UI/UpgradeCanvas.tscn" id="3_y1yrn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mgtjl"]
 size = Vector2(1931, 60)

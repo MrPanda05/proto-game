@@ -16,8 +16,8 @@ func _ready() -> void:
 func ShowUpgrades():
 	visible = true
 
-func UpgradedPicked():
-	GameManager.GameEventBus.OnUpgradePicked.emit()
+func UpgradedPicked(upgrade: BaseUpgrade):
+	GameManager.GameEventBus.OnUpgradePicked.emit(upgrade)
 	visible = false
 
 func RedoUpgrade():

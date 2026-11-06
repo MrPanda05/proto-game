@@ -21,7 +21,7 @@ func EndCurrentWave():
 	OnWaveEnded.emit()
 	GameManager.GameEventBus.OnWaveEnded.emit()
 
-func NextWave():
+func NextWave(_upgrade: BaseUpgrade = null):
 	OnWaveStarted.emit(currentWave)
 	GameManager.GameEventBus.OnWaveStarted.emit(currentWave)
 	print("new wave")

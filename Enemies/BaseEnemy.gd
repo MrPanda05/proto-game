@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 @export var target: Node2D
 @export var _decay: float = 1.5
-@export var Data: EnemyResource
+@export var Data: EnemyStatsComponents
 @export var _pushTransfer: float = 0.8   # <1 so the chain fades out
 @export var _minPushSpeed: float = 10.0
 #The brain of the AI, only movement related

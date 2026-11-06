@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://be5ufkj16jhna"]
 
-[ext_resource type="Script" uid="uid://b02jmc3vrje8k" path="res://Upgrades/UpgradeCanvas.gd" id="1_nb66i"]
-[ext_resource type="PackedScene" uid="uid://d033mn56a3j5k" path="res://Upgrades/UpgradeBox.tscn" id="2_6y0dh"]
-[ext_resource type="PackedScene" uid="uid://bm1suo0cbvpym" path="res://Upgrades/RerollButton.tscn" id="3_5ivdn"]
+[ext_resource type="Script" uid="uid://b02jmc3vrje8k" path="res://Upgrades/UI/UpgradeCanvas.gd" id="1_nb66i"]
+[ext_resource type="PackedScene" uid="uid://d033mn56a3j5k" path="res://Upgrades/UI/UpgradeBox.tscn" id="2_6y0dh"]
+[ext_resource type="PackedScene" uid="uid://bm1suo0cbvpym" path="res://Upgrades/UI/RerollButton.tscn" id="3_5ivdn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ivdn"]
 bg_color = Color(0.023529412, 0.023529412, 0.023529412, 0)

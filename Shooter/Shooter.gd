@@ -9,6 +9,7 @@ extends Node2D
 var _canShoot: bool = true
 var _firerateTimer: Timer
 
+#fix weapon and bullet damage and stats
 func _ready() -> void:
 	_firerateTimer = get_node("FirerateTimer")
 

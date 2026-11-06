@@ -51,7 +51,8 @@ func RecomputeJump():
 func PausePlayer():
 	playerStates = States.PAUSED
 
-func ReturnPlayer():
+func ReturnPlayer(upgrade: BaseUpgrade):
+	upgrade.ApplyUpgradeStats(self)
 	playerStates = States.PLAYING
 	
 func PlayerDeath():
