@@ -11,5 +11,6 @@ jumpToPeak = 0.25
 jumpTimeToGround = 0.2
 speed = 250.0
 maxHealth = 50.0
+damage = 3.0
 fireRate = 0.5
 metadata/_custom_type_script = "uid://cnqq4tsv61fa5"

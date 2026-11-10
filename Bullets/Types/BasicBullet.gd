@@ -2,7 +2,6 @@ class_name BasicBullet
 extends BaseBullet
 
 var _direction: Vector2
-
 func OnHit(hitBox: HitboxComponent):
 	if(hitBox != null):
 		var damageInfo: HitInfo = HitInfo.new()

@@ -7,7 +7,7 @@ enum States { PAUSED, PLAYING, DEAD }
 @onready var Wand: Shooter = $Shooter
 @onready var Stats: PlayerStatsComponent = $PlayerStatsComponent
 @onready var HealthComp: HealthComponent = $HealthComponent
-
+@onready var hurtbox = $HurtboxComponent
 var _jumpVel: float = 0
 var _jumpGravity: float = 0
 var _fallGravity: float = 0
@@ -41,6 +41,12 @@ func _ready() -> void:
 	GameManager.GameEventBus.OnWaveEnded.connect(PausePlayer)
 	GameManager.GameEventBus.OnUpgradePicked.connect(ReturnPlayer)
 	HealthComp.OnDeath.connect(PlayerDeath)
+	hurtbox.OnHit.connect(OnHit)
+	
+
+func OnHit(Hitbox: HitboxComponent):
+	HealthComp.TakeDamage(Hitbox.info)
+	pass
 
 func RecomputeJump():
 	_jumpVel= ((2.0 * Stats.jumpHeight) / Stats.jumpToPeak) * -1
@@ -53,6 +59,7 @@ func PausePlayer():
 
 func ReturnPlayer(upgrade: BaseUpgrade):
 	upgrade.ApplyUpgradeStats(self)
+	Wand.SetUpShooter(Stats.fireRate, Stats.damage, 2)
 	playerStates = States.PLAYING
 	
 func PlayerDeath():
@@ -146,4 +153,4 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 
 func OnStart() -> void:
-	Wand.SetUpShooter(Stats.fireRate)
+	Wand.SetUpShooter(Stats.fireRate, Stats.damage, 2)

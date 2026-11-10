@@ -13,6 +13,7 @@ var _angle: float = 0.0
 @onready var _hitBox: HitboxComponent = $HitboxComponent
 @onready var _healthComponent: HealthComponent = $HealthComponent
 @onready var _visual: Sprite2D = $Sprite2D
+@onready var _wand: Shooter = $Shooter
 
 signal OnDeath
 
@@ -53,10 +54,12 @@ func _ready() -> void:
 	Brain = get_node_or_null("Brain")
 	if Brain == null:
 		printerr("NO BRAIN")
+	_wand.SetUpShooter(0.6, 5, 3)
 
 func _physics_process(_delta: float) -> void:
 	queue_redraw()
 	apply_central_force((desiredVelocity - linear_velocity) * Data.steerStrength * mass)
+	_wand.Shoot(target.position - position)
 
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:

@@ -5,9 +5,11 @@ extends Node2D
 @export var _wandVisual: Sprite2D
 @export var _wandExitPoint: Node2D
 @export var fireRate: float
+var _damage: float
 @export var BulletScene: PackedScene
 var _canShoot: bool = true
 var _firerateTimer: Timer
+var enemyMask: int
 
 #fix weapon and bullet damage and stats
 func _ready() -> void:
@@ -22,12 +24,16 @@ func Shoot(direction: Vector2) -> void:
 	bulletInstance.global_position = _wandExitPoint.global_position
 	get_parent().get_parent().add_child(bulletInstance)
 	bulletInstance.Move((direction - global_position).normalized())
+	bulletInstance.SetUp(_damage, enemyMask)
 	print("shoot")
 	_firerateTimer.start()
 	_canShoot = false
 
-func SetUpShooter(firerate: float) -> void:
+func SetUpShooter(firerate: float, damage: float, mask: int) -> void:
 	fireRate = firerate
+	_damage = damage
+	_firerateTimer.wait_time = fireRate
+	enemyMask = mask
 
 func MoveShoot(direction: Vector2):
 	if(_wandVisual == null): return

@@ -19,3 +19,7 @@ func UpdateHealth():
 		_healthSlider.value = _healthComponent.currentHealth
 	if(_healthValues != null):
 		_healthValues.text = "%d/%d" % [int(_healthComponent.currentHealth),int(_healthComponent.maxHealth)]
+
+
+func _process(delta: float) -> void:
+	UpdateHealth()

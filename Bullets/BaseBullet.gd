@@ -15,3 +15,8 @@ func OnHit(hitBox: HitboxComponent)
 
 @abstract
 func Move(dir: Vector2)
+
+func SetUp(damage: float, mask: int):
+	baseDamage = damage
+	_hurtbox.set_collision_mask_value(mask, true)
+	
