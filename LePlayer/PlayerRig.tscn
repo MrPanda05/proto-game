@@ -104,6 +104,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="HurtboxComponent" parent="." unique_id=995218557 instance=ExtResource("10_kq8y8")]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1419391085]
 shape = SubResource("RectangleShape2D_4usca")

@@ -3,4 +3,9 @@
 [ext_resource type="Script" uid="uid://cr6qhhhn3jrft" path="res://Commons/Components/HitboxComponent.gd" id="1_232vt"]
 
 [node name="HitboxComponent" type="Area2D" unique_id=709588686]
+collision_layer = 0
+collision_mask = 0
+monitorable = false
 script = ExtResource("1_232vt")
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]

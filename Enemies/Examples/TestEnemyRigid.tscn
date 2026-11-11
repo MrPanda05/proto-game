@@ -18,6 +18,12 @@ autoStart = false
 [node name="HoverStateRIG" type="Node" parent="Brain" index="0" unique_id=156836124]
 script = ExtResource("3_d107h")
 
+[node name="HurtboxComponent" parent="." index="4" unique_id=995218557]
+collision_layer = 2
+
+[node name="HitboxComponent" parent="." index="5" unique_id=709588686]
+collision_layer = 0
+
 [node name="EnemyStatsComponents" parent="." index="6" unique_id=643283664]
 referenceStats = ExtResource("4_ef8el")
 

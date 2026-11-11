@@ -26,6 +26,9 @@ var _shootInput: bool = false
 const ONE_WAY_LAYER := 6
 const FLOOR_DOT := 0.7   # how upward a contact normal must be to count as floor
 
+signal OnDeath
+signal OnHit(hitdata: HitInfo)
+
 
 func _ready() -> void:
 	HealthComp.SetUp(Stats.maxHealth)
@@ -41,12 +44,12 @@ func _ready() -> void:
 	GameManager.GameEventBus.OnWaveEnded.connect(PausePlayer)
 	GameManager.GameEventBus.OnUpgradePicked.connect(ReturnPlayer)
 	HealthComp.OnDeath.connect(PlayerDeath)
-	hurtbox.OnHit.connect(OnHit)
+	hurtbox.OnHit.connect(OnDamageTaken)
 	
 
-func OnHit(Hitbox: HitboxComponent):
-	HealthComp.TakeDamage(Hitbox.info)
-	pass
+func OnDamageTaken(hitdata: HitInfo):
+	HealthComp.TakeDamage(hitdata.damage)
+	OnHit.emit(hitdata)
 
 func RecomputeJump():
 	_jumpVel= ((2.0 * Stats.jumpHeight) / Stats.jumpToPeak) * -1
@@ -64,6 +67,7 @@ func ReturnPlayer(upgrade: BaseUpgrade):
 	
 func PlayerDeath():
 	playerStates = States.DEAD
+	OnDeath.emit()
 
 func GarderInputs() -> void:
 	_horizontalInput = Input.get_axis("Left", "Right")
@@ -104,6 +108,7 @@ func _physics_process(_delta: float) -> void:
 func HandleWand() -> void:
 	var dir := get_global_mouse_position()
 	Wand.MoveShoot(dir);
+	dir = dir - global_position
 	if(_autoShoot || _shootInput):
 		Wand.Shoot(dir)
 
@@ -153,4 +158,4 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 
 func OnStart() -> void:
-	Wand.SetUpShooter(Stats.fireRate, Stats.damage, 2)
+	Wand.SetUpShooter(Stats.fireRate, Stats.damage, 1<<1)

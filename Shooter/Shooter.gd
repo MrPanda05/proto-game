@@ -9,6 +9,7 @@ var _damage: float
 @export var BulletScene: PackedScene
 var _canShoot: bool = true
 var _firerateTimer: Timer
+## The mask that the bullet of this wand should hit
 var enemyMask: int
 
 #fix weapon and bullet damage and stats
@@ -21,11 +22,10 @@ func Shoot(direction: Vector2) -> void:
 		printerr("Bulet instance is Null, fix it!")
 		return
 	var bulletInstance: BaseBullet = BulletScene.instantiate()
-	bulletInstance.global_position = _wandExitPoint.global_position
 	get_parent().get_parent().add_child(bulletInstance)
-	bulletInstance.Move((direction - global_position).normalized())
-	bulletInstance.SetUp(_damage, enemyMask)
-	print("shoot")
+	bulletInstance.SetUp(_damage, enemyMask, get_parent())
+	bulletInstance.global_position = _wandExitPoint.global_position
+	bulletInstance.Move(direction.normalized())
 	_firerateTimer.start()
 	_canShoot = false
 
@@ -33,6 +33,7 @@ func SetUpShooter(firerate: float, damage: float, mask: int) -> void:
 	fireRate = firerate
 	_damage = damage
 	_firerateTimer.wait_time = fireRate
+	print(mask)
 	enemyMask = mask
 
 func MoveShoot(direction: Vector2):

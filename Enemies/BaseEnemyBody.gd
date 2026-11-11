@@ -16,16 +16,7 @@ var _angle: float = 0.0
 @onready var _wand: Shooter = $Shooter
 
 signal OnDeath
-
-## On Took damage
-func OnTookDamage(hitInfo: HitInfo):
-	print(hitInfo.damage)
-	_healthComponent.TakeDamage(hitInfo.damage)
-
-## On contact damage with player
-func OnHit(hitBox: HitboxComponent):
-	print("Ninja")
-	pass
+signal OnHit(hitData:HitInfo)
 
 ## HealthChanged
 func OnHealthChanged():
@@ -41,7 +32,10 @@ func OnHealthChanged():
 func OnDied():
 	OnDeath.emit()
 	queue_free()
-	print("Died")
+
+func OnDamageTaken(hitData: HitInfo):
+	_healthComponent.TakeDamage(hitData.damage)
+	OnHit.emit(hitData)
 
 func _ready() -> void:
 	gravity_scale = 0.0
@@ -54,12 +48,13 @@ func _ready() -> void:
 	Brain = get_node_or_null("Brain")
 	if Brain == null:
 		printerr("NO BRAIN")
-	_wand.SetUpShooter(0.6, 5, 3)
+	_wand.SetUpShooter(0.6, 5, (1<<0)|(1<<2))
 
 func _physics_process(_delta: float) -> void:
 	queue_redraw()
 	apply_central_force((desiredVelocity - linear_velocity) * Data.steerStrength * mass)
-	_wand.Shoot(target.position - position)
+	if(_wand != null):
+		_wand.Shoot(target.global_position - global_position)
 
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
@@ -71,8 +66,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 func OnStart() -> void:
 	if Brain != null:
 		Brain.StartFSM()
-	_hurtBox.connect("OnHit", OnHit)
-	_hitBox.connect("OnHit", OnTookDamage)
-	_healthComponent.connect("OnHealthChanged", OnHealthChanged)
-	_healthComponent.connect("OnDeath", OnDied)
+	_hurtBox.OnHit.connect(OnDamageTaken)
+	_healthComponent.OnHealthChanged.connect(OnHealthChanged)
+	_healthComponent.OnDeath.connect(OnDied)
 	_healthComponent.SetUp(Data.maxHealth)
