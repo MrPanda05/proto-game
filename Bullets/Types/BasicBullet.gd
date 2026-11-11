@@ -17,5 +17,6 @@ func Move(dir: Vector2):
 	_direction = dir
 
 func _physics_process(delta: float) -> void:
-	velocity = _direction * speed
-	move_and_slide()
+	if(GameManager.CurrentState == GameManager.States.PLAYING):
+		velocity = _direction * speed
+		move_and_slide()

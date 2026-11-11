@@ -18,6 +18,7 @@ func ShowUpgrades():
 
 func UpgradedPicked(upgrade: BaseUpgrade):
 	GameManager.GameEventBus.OnUpgradePicked.emit(upgrade)
+	GameManager.CurrentState = GameManager.States.PLAYING
 	visible = false
 
 func RedoUpgrade():

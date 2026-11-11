@@ -15,11 +15,13 @@ func StartWave():
 	print("Starting wave")
 	OnWaveStarted.emit(currentWave)
 	GameManager.GameEventBus.OnWaveStarted.emit(currentWave)
+	
 
 func EndCurrentWave():
 	currentWave += 1
 	OnWaveEnded.emit()
 	GameManager.GameEventBus.OnWaveEnded.emit()
+	GameManager.CurrentState = GameManager.States.UPGRADE
 
 func NextWave(_upgrade: BaseUpgrade = null):
 	OnWaveStarted.emit(currentWave)
