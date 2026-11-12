@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://b02jmc3vrje8k" path="res://Upgrades/UI/UpgradeCanvas.gd" id="1_nb66i"]
 [ext_resource type="PackedScene" uid="uid://d033mn56a3j5k" path="res://Upgrades/UI/UpgradeBox.tscn" id="2_6y0dh"]
+[ext_resource type="Resource" uid="uid://sswxkukik1g0" path="res://Upgrades/UpgradeResources/DamageUpgrade.tres" id="2_rfqe5"]
+[ext_resource type="Script" uid="uid://cwu3wlm6nd0dp" path="res://Upgrades/BaseUpgrade.gd" id="2_sdbht"]
 [ext_resource type="PackedScene" uid="uid://bm1suo0cbvpym" path="res://Upgrades/UI/RerollButton.tscn" id="3_5ivdn"]
+[ext_resource type="Resource" uid="uid://b7n718jmyfnq" path="res://Upgrades/UpgradeResources/DefenseUpgrade.tres" id="3_sdbht"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ivdn"]
 bg_color = Color(0.023529412, 0.023529412, 0.023529412, 0)
@@ -12,6 +15,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="UpgradeCanvas" type="CanvasLayer" unique_id=1014691260]
 script = ExtResource("1_nb66i")
+_upgradeResource = Array[ExtResource("2_sdbht")]([ExtResource("2_rfqe5"), ExtResource("3_sdbht")])
 
 [node name="Panel" type="Panel" parent="." unique_id=966017931]
 anchors_preset = -1

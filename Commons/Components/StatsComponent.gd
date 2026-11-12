@@ -8,10 +8,12 @@ signal onChanged
 @export var referenceStats: BaseStats
 
 var speed: float = 0
+var speedPercent: float = 0
 var maxHealth: float = 0
 var contactDamage: float = 0
 var damage: float = 0
 var fireRate: float = 0
+var fireRatePercent: float = 0
 var defense: float = 0
 
 
@@ -39,10 +41,12 @@ func ManualSetUp(stats: BaseStats) -> void:
 ## Copies values from the resource WITHOUT emitting. Child classes override and call super.
 func _ApplyStats(stats: BaseStats) -> void:
 	speed = stats.speed
+	speedPercent = stats.speedPercent
 	maxHealth = stats.maxHealth
 	contactDamage = stats.contactDamage
 	damage = stats.damage
 	fireRate = stats.fireRate
+	fireRatePercent = stats.fireRatePercent
 	defense = stats.defense
 
 
@@ -64,6 +68,9 @@ func SetSpeed(value: float) -> void:
 	speed = value
 	onChanged.emit()
 
+func SetSpeedPercent(value: float) -> void:
+	speedPercent = value
+	onChanged.emit()
 
 func SetMaxHealth(value: float) -> void:
 	maxHealth = value
@@ -84,6 +91,9 @@ func SetFireRate(value: float) -> void:
 	fireRate = value
 	onChanged.emit()
 
+func SetFireRatePercent(value: float) -> void:
+	fireRatePercent = value
+	onChanged.emit()	
 
 func SetDefense(value: float) -> void:
 	defense = value

@@ -13,5 +13,10 @@ func _ready() -> void:
 	_upgradeDescription.text = currentUpgrade.upgradeDescription
 	_upgradeIcon.texture = currentUpgrade.icon
 
+func updateUpgrade() -> void:
+	_upgradName.text = currentUpgrade.upgradeName
+	_upgradeDescription.text = currentUpgrade.upgradeDescription
+	_upgradeIcon.texture = currentUpgrade.icon
+	
 func OnButtonButtonDown() -> void:
 	OnUpgradePicked.emit(currentUpgrade)

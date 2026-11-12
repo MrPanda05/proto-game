@@ -6,6 +6,10 @@ extends Resource
 	set(value):
 		speed = value
 		emit_changed()
+@export var speedPercent: float = 0:
+	set(value):
+		speedPercent = value
+		emit_changed()
 @export var maxHealth: float = 0:
 	set(value):
 		maxHealth = value
@@ -21,6 +25,10 @@ extends Resource
 @export var fireRate: float = 0:
 	set(value):
 		fireRate = value
+		emit_changed()
+@export  var fireRatePercent: float = 0:
+	set(value):
+		fireRatePercent = value
 		emit_changed()
 @export var defense: float = 0:
 	set(value):

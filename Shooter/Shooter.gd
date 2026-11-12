@@ -29,10 +29,11 @@ func Shoot(direction: Vector2) -> void:
 	_firerateTimer.start()
 	_canShoot = false
 
-func SetUpShooter(firerate: float, damage: float, mask: int) -> void:
+func SetUpShooter(firerate: float, fireratepercent: float,
+				damage: float, mask: int) -> void:
 	fireRate = firerate
 	_damage = damage
-	_firerateTimer.wait_time = fireRate
+	_firerateTimer.wait_time = fireRate / fireratepercent
 	print(mask)
 	enemyMask = mask
 
