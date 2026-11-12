@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AtkSpeedUpgrade" format=3 uid="uid://dxcm4gqgsaeje"]
+
+[ext_resource type="Script" uid="uid://duy1nm5arw70l" path="res://Upgrades/FireRateUpgrade.gd" id="1_svtv2"]
+
+[resource]
+script = ExtResource("1_svtv2")
+value = 1.0
+upgradeName = "Fire rate Upgrade"
+upgradeDescription = "Gains +10% fire rate"
+metadata/_custom_type_script = "uid://dq7adijtgfqxq"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://ddx5xekklev4l"]
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://ddx5xekklev4l"]
 
 [ext_resource type="Script" uid="uid://dpm8l18q8v5ri" path="res://Enemies/Stats/EnemyStats.gd" id="1_2xcr2"]
 
@@ -10,4 +10,5 @@ maxHealth = 6.0
 contactDamage = 5.0
 damage = 10.0
 fireRate = 0.2
+fireRatePercent = 1.0
 metadata/_custom_type_script = "uid://dpm8l18q8v5ri"

@@ -62,7 +62,8 @@ func PausePlayer():
 
 func ReturnPlayer(upgrade: BaseUpgrade):
 	upgrade.ApplyUpgradeStats(self)
-	Wand.SetUpShooter(Stats.fireRate, Stats.damage, 2)
+	HealthComp.SetUp(Stats.maxHealth)
+	Wand.SetUpShooter(Stats.fireRate, Stats.fireRatePercent, Stats.damage, 2)
 	playerStates = States.PLAYING
 	
 func PlayerDeath():
@@ -141,7 +142,7 @@ func Movement(state: PhysicsDirectBodyState2D) -> void:
 		_jumpInput = false
 
 	# Horizontal movement
-	vel.x = _horizontalInput * Stats.speed
+	vel.x = _horizontalInput * Stats.speed * Stats.speedPercent
 
 	state.linear_velocity = vel
 
@@ -158,4 +159,4 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 
 func OnStart() -> void:
-	Wand.SetUpShooter(Stats.fireRate, Stats.damage, 1<<1)
+	Wand.SetUpShooter(Stats.fireRate, Stats.fireRatePercent, Stats.damage, 1<<1)

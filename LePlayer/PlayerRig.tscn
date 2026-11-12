@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c7elqjdqm6c6l"]
 
-[ext_resource type="Texture2D" uid="uid://d0uide6srbo2w" path="res://icon.svg" id="1_47ucn"]
 [ext_resource type="Script" uid="uid://bfgfj5twuedkn" path="res://LePlayer/PlayerRig.gd" id="1_je4v8"]
+[ext_resource type="Texture2D" uid="uid://bm8c8vnjpho04" path="res://LePlayer/ninja_1.png" id="2_kq8y8"]
 [ext_resource type="PackedScene" uid="uid://dx01pdu4xek54" path="res://Shooter/Shooter.tscn" id="3_rga63"]
 [ext_resource type="PackedScene" uid="uid://cnpeukp37s070" path="res://Bullets/Types/BasicBullet.tscn" id="4_cu106"]
 [ext_resource type="PackedScene" uid="uid://d0keqspt04wdy" path="res://LePlayer/Stats/PlayerStatsComponent.tscn" id="5_nkmgg"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://ctcwig8mijnyb" path="res://Themes/HealthSliderTheme.tres" id="8_2yrgb"]
 [ext_resource type="Script" uid="uid://cckfpfxh6pi5u" path="res://Commons/UI/HealthUI.gd" id="8_q6m1s"]
 [ext_resource type="PackedScene" uid="uid://bjt4qk66gg8ly" path="res://Commons/Components/HurtboxComponent.tscn" id="10_kq8y8"]
+[ext_resource type="PackedScene" uid="uid://c7ullrpfaw7q6" path="res://Commons/Components/StatsComponent.tscn" id="11_0ax1n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a28d8"]
 friction = 0.0
@@ -36,13 +37,14 @@ script = ExtResource("1_je4v8")
 playerStates = 1
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1049500892]
-scale = Vector2(0.2615, 0.707)
-texture = ExtResource("1_47ucn")
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("2_kq8y8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1956739146]
 shape = SubResource("RectangleShape2D_mgtjl")
 
 [node name="Shooter" parent="." unique_id=806875647 instance=ExtResource("3_rga63")]
+position = Vector2(19, 10)
 BulletScene = ExtResource("4_cu106")
 
 [node name="PlayerStatsComponent" parent="." unique_id=1060335031 instance=ExtResource("5_nkmgg")]
@@ -108,5 +110,7 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1419391085]
 shape = SubResource("RectangleShape2D_4usca")
+
+[node name="StatsComponent" parent="." unique_id=1607527114 instance=ExtResource("11_0ax1n")]
 
 [connection signal="ready" from="." to="." method="OnStart"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ce7dpb88id1n3" path="res://3.png" id="1_dr4oc"]
 [ext_resource type="Script" uid="uid://q7hrep1wu6m" path="res://Upgrades/UI/UpgradeBox.gd" id="1_i8mk6"]
-[ext_resource type="Resource" uid="uid://sswxkukik1g0" path="res://Upgrades/UpgradeResources/DamageUpgrade.tres" id="2_kh6bn"]
+[ext_resource type="Resource" uid="uid://dxcm4gqgsaeje" path="res://Upgrades/UpgradeResources/FireRateUpgrade.tres" id="2_kh6bn"]
 
 [node name="UpgradeBox" type="PanelContainer" unique_id=13141202]
 custom_minimum_size = Vector2(0, 450)

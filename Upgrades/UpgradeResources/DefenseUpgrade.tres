@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DefenseUpgrade" format=3 uid="uid://b7n718jmyfnq"]
+
+[ext_resource type="Script" uid="uid://ca73meogpmmxb" path="res://Upgrades/DefenseUpgrade.gd" id="1_lfuv5"]
+
+[resource]
+script = ExtResource("1_lfuv5")
+value = 1.0
+upgradeName = "Defense Upgrade"
+upgradeDescription = "Gains +1 armour"
+metadata/_custom_type_script = "uid://dq7adijtgfqxq"
