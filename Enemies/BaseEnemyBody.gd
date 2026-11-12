@@ -37,6 +37,9 @@ func OnDamageTaken(hitData: HitInfo):
 	_healthComponent.TakeDamage(hitData.damage)
 	OnHit.emit(hitData)
 
+
+
+
 func _ready() -> void:
 	gravity_scale = 0.0
 	lock_rotation = true
@@ -53,8 +56,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	queue_redraw()
 	apply_central_force((desiredVelocity - linear_velocity) * Data.steerStrength * mass)
-	if(_wand != null):
-		_wand.Shoot(target.global_position - global_position)
+	
 
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:

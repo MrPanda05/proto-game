@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://s30ahw4c0opb" path="res://Enemies/BaseEnemyBody.tscn" id="1_hh4sj"]
 [ext_resource type="PackedScene" uid="uid://7oujxghyo5uu" path="res://Commons/FiniteStateMachine/StateMachine.tscn" id="2_r7kdx"]
 [ext_resource type="Script" uid="uid://sjda82n6anl1" path="res://Enemies/States/HoverStateRig.gd" id="3_d107h"]
+[ext_resource type="Script" uid="uid://c54frd10kpgvp" path="res://Enemies/States/StopState.gd" id="4_7bmon"]
 [ext_resource type="Resource" uid="uid://ddx5xekklev4l" path="res://Enemies/Stats/TestEnemy.tres" id="4_ef8el"]
 [ext_resource type="Script" uid="uid://cckfpfxh6pi5u" path="res://Commons/UI/HealthUI.gd" id="5_6fwj5"]
 [ext_resource type="PackedScene" uid="uid://dx01pdu4xek54" path="res://Shooter/Shooter.tscn" id="6_76gp1"]
@@ -17,6 +18,9 @@ autoStart = false
 
 [node name="HoverStateRIG" type="Node" parent="Brain" index="0" unique_id=156836124]
 script = ExtResource("3_d107h")
+
+[node name="StopState" type="Node" parent="Brain" index="1" unique_id=440383175]
+script = ExtResource("4_7bmon")
 
 [node name="HurtboxComponent" parent="." index="4" unique_id=995218557]
 collision_layer = 2

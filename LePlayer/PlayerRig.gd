@@ -31,7 +31,7 @@ signal OnHit(hitdata: HitInfo)
 
 
 func _ready() -> void:
-	HealthComp.SetUp(Stats.maxHealth)
+	HealthComp.SetUp(Stats.maxHealth, true)
 	RecomputeJump()
 	gravity_scale = 0.0                       # we apply our own gravity
 	lock_rotation = true                      # player must not tumble
@@ -62,13 +62,14 @@ func PausePlayer():
 
 func ReturnPlayer(upgrade: BaseUpgrade):
 	upgrade.ApplyUpgradeStats(self)
-	HealthComp.SetUp(Stats.maxHealth)
 	Wand.SetUpShooter(Stats.fireRate, Stats.fireRatePercent, Stats.damage, 2)
 	playerStates = States.PLAYING
 	
 func PlayerDeath():
 	playerStates = States.DEAD
+	
 	OnDeath.emit()
+	GameManager.ChangeState(GameManager.States.GAMEOVER)
 
 func GarderInputs() -> void:
 	_horizontalInput = Input.get_axis("Left", "Right")
@@ -155,6 +156,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 			state.linear_velocity = Vector2.ZERO
 			pass
 		States.DEAD:
+			state.linear_velocity = Vector2.ZERO
 			pass
 
 

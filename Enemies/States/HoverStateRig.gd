@@ -12,6 +12,8 @@ func Enter() -> void:
 	)
 
 func FixUpdate(delta: float) -> void:
+	if(enemy._wand != null):
+		enemy._wand.Shoot(enemy.target.global_position - enemy.global_position)
 	if not is_instance_valid(enemy.target):
 		enemy.desiredVelocity = Vector2.ZERO
 		return

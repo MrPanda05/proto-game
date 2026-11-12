@@ -10,7 +10,6 @@
 [ext_resource type="Theme" uid="uid://ctcwig8mijnyb" path="res://Themes/HealthSliderTheme.tres" id="8_2yrgb"]
 [ext_resource type="Script" uid="uid://cckfpfxh6pi5u" path="res://Commons/UI/HealthUI.gd" id="8_q6m1s"]
 [ext_resource type="PackedScene" uid="uid://bjt4qk66gg8ly" path="res://Commons/Components/HurtboxComponent.tscn" id="10_kq8y8"]
-[ext_resource type="PackedScene" uid="uid://c7ullrpfaw7q6" path="res://Commons/Components/StatsComponent.tscn" id="11_0ax1n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a28d8"]
 friction = 0.0
@@ -110,7 +109,5 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1419391085]
 shape = SubResource("RectangleShape2D_4usca")
-
-[node name="StatsComponent" parent="." unique_id=1607527114 instance=ExtResource("11_0ax1n")]
 
 [connection signal="ready" from="." to="." method="OnStart"]

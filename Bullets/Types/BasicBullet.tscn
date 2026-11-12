@@ -36,3 +36,5 @@ shape = SubResource("CircleShape2D_mgtjl")
 shape = SubResource("CircleShape2D_4usca")
 
 [node name="StatsComponent" parent="." index="4" unique_id=1060335031 instance=ExtResource("5_rp85u")]
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

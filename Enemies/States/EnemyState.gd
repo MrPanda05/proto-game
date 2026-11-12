@@ -19,5 +19,5 @@ func SteerTo(anchor: Vector2, delta: float) -> void:
 	if dist > enemy.Data.stop_radius:
 		var speed_scale := clampf(dist / enemy.Data.slow_radius, 0.0, 1.0)
 		desired = to_anchor / dist * enemy.Data.speed * speed_scale
-	DebugVectorDraw.DrawVector(enemy.global_position, desired, Color.AQUA)
+	#DebugVectorDraw.DrawVector(enemy.global_position, desired, Color.AQUA)
 	enemy.desiredVelocity = enemy.desiredVelocity.move_toward(desired, enemy.Data.acceleration * delta)

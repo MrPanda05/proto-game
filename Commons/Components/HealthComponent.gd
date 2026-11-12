@@ -8,9 +8,12 @@ signal OnDeath
 signal OnHealthChanged
 signal OnMaxHealthChanged
 
-func SetUp(newMaxHealth: float) -> void:
+func SetUp(newMaxHealth: float, recoverHealth: bool = false) -> void:
 	maxHealth = newMaxHealth
-	currentHealth = maxHealth
+	OnMaxHealthChanged.emit()
+	if(recoverHealth):
+		currentHealth = maxHealth
+		OnHealthChanged.emit()
 
 
 func TakeDamage(damage: float) -> void:

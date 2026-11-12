@@ -20,3 +20,7 @@ func _physics_process(delta: float) -> void:
 	if(GameManager.CurrentState == GameManager.States.PLAYING):
 		velocity = _direction * speed
 		move_and_slide()
+
+
+func OnTimerTimeout() -> void:
+	queue_free()

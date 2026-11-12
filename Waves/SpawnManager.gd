@@ -36,4 +36,4 @@ func Spawn(currentWave: int):
 		_currentEnemies += 1
 		instance.global_position = _spawnPoint.global_position
 		instance.connect("OnDeath", OnEnemyDeath)
-		instance._healthComponent.SetUp(instance._healthComponent.maxHealth * _waveManager.currentWave)
+		instance._healthComponent.SetUp(instance._healthComponent.maxHealth * _waveManager.currentWave, true)

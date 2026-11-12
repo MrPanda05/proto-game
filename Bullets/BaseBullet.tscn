@@ -18,3 +18,8 @@ texture = ExtResource("1_gcn5v")
 shape = SubResource("CircleShape2D_mgtjl")
 
 [node name="HitboxComponent" parent="." unique_id=709588686 instance=ExtResource("2_yd5oh")]
+
+[node name="Timer" type="Timer" parent="." unique_id=886610340]
+wait_time = 8.0
+one_shot = true
+autostart = true

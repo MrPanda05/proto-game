@@ -16,3 +16,7 @@ func CreateGameBus():
 
 func DestroyGameBus():
 	GameEventBus.queue_free()
+
+func ChangeState(newState: States):
+	CurrentState = newState
+	OnStateChanged.emit()
