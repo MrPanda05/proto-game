@@ -7,3 +7,7 @@ func OnButtonButtonDown() -> void:
 	print(get_tree().root.name)
 	get_tree().change_scene_to_file("res://Levels/TestLevel.tscn")
 	GameManager.CurrentState = GameManager.States.PLAYING
+
+
+func OnQuitButton() -> void:
+	get_tree().quit()

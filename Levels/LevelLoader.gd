@@ -8,4 +8,4 @@ func _ready() -> void:
 
 func CheckGlobalState():
 	if(GameManager.CurrentState == GameManager.States.GAMEOVER):
-		process_mode = Node.PROCESS_MODE_DISABLED
+		set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
