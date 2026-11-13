@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="AtkSpeedUpgrade" format=3 uid="uid://dxcm4gqgsaeje"]
 
+[ext_resource type="Texture2D" uid="uid://bfij7c6nxrpsd" path="res://Upgrades/UpgradeImages/firereate_upgrade_1.png" id="1_qs7re"]
 [ext_resource type="Script" uid="uid://duy1nm5arw70l" path="res://Upgrades/FireRateUpgrade.gd" id="1_svtv2"]
 
 [resource]
 script = ExtResource("1_svtv2")
 value = 1.0
+icon = ExtResource("1_qs7re")
 upgradeName = "Fire rate Upgrade"
 upgradeDescription = "Gains +10% fire rate"
 metadata/_custom_type_script = "uid://dq7adijtgfqxq"

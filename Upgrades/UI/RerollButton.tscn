@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bm1suo0cbvpym"]
 
-[ext_resource type="Texture2D" uid="uid://d0uide6srbo2w" path="res://icon.svg" id="1_af8q4"]
 [ext_resource type="Script" uid="uid://5d15idh07aoi" path="res://Upgrades/UI/RerollButton.gd" id="1_f4oce"]
+[ext_resource type="Texture2D" uid="uid://cqbhn4tddekeo" path="res://Upgrades/UpgradeImages/reroll_1.png" id="2_nr88l"]
 
 [node name="RerollButton" type="PanelContainer" unique_id=1407519083]
 custom_minimum_size = Vector2(0, 450)
@@ -41,7 +41,7 @@ clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
-texture = ExtResource("1_af8q4")
+texture = ExtResource("2_nr88l")
 expand_mode = 1
 
 [node name="UpgradeDescriptioon" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1338683621]

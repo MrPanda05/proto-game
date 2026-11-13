@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="DamageUpgrade" format=3 uid="uid://sswxkukik1g0"]
 
+[ext_resource type="Texture2D" uid="uid://cq2gn7mv80wjd" path="res://Upgrades/UpgradeImages/damage_upgrade_1.png" id="1_4b3ao"]
 [ext_resource type="Script" uid="uid://dq7adijtgfqxq" path="res://Upgrades/DamageUpgrade.gd" id="1_njodh"]
 
 [resource]
 script = ExtResource("1_njodh")
 value = 5.0
+icon = ExtResource("1_4b3ao")
 upgradeName = "Damage upgrade"
 upgradeDescription = "Gains +5 damage"
 metadata/_custom_type_script = "uid://dq7adijtgfqxq"
