@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SpeedUpgrade" format=3 uid="uid://dh3dqpwgb7wcq"]
 
-[ext_resource type="Texture2D" uid="uid://dc4u5iag43pd7" path="res://Upgrades/UpgradeImages/speed_upgrade_1.png" id="1_h3yww"]
+[ext_resource type="Texture2D" uid="uid://qfwovh0pxced" path="res://Upgrades/UpgradeImages/speedupgradenew.png" id="1_h3yww"]
 [ext_resource type="Script" uid="uid://0dq82aqyhxsv" path="res://Upgrades/SpeedUpgrade.gd" id="1_tnidw"]
 
 [resource]

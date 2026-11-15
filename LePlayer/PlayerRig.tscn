@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c7elqjdqm6c6l"]
 
 [ext_resource type="Script" uid="uid://bfgfj5twuedkn" path="res://LePlayer/PlayerRig.gd" id="1_je4v8"]
-[ext_resource type="Texture2D" uid="uid://bm8c8vnjpho04" path="res://LePlayer/ninja_1.png" id="2_kq8y8"]
+[ext_resource type="Texture2D" uid="uid://7k83yqlaflsx" path="res://LePlayer/NEWNINJA.png" id="2_kq8y8"]
 [ext_resource type="PackedScene" uid="uid://dx01pdu4xek54" path="res://Shooter/Shooter.tscn" id="3_rga63"]
 [ext_resource type="PackedScene" uid="uid://cnpeukp37s070" path="res://Bullets/Types/BasicBullet.tscn" id="4_cu106"]
 [ext_resource type="PackedScene" uid="uid://d0keqspt04wdy" path="res://LePlayer/Stats/PlayerStatsComponent.tscn" id="5_nkmgg"]
@@ -22,7 +22,7 @@ height = 96.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4usca"]
-size = Vector2(48, 96)
+size = Vector2(34, 91)
 
 [node name="PlayerRig" type="RigidBody2D" unique_id=459224005 groups=["Player"]]
 collision_layer = 4
@@ -37,7 +37,7 @@ script = ExtResource("1_je4v8")
 playerStates = 1
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1049500892]
-scale = Vector2(0.07, 0.07)
+scale = Vector2(3.095, 3.095)
 texture = ExtResource("2_kq8y8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1956739146]
@@ -109,6 +109,7 @@ vertical_alignment = 1
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1419391085]
+position = Vector2(1, 2.5)
 shape = SubResource("RectangleShape2D_4usca")
 
 [connection signal="ready" from="." to="." method="OnStart"]

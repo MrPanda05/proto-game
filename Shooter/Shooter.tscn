@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dx01pdu4xek54"]
 
 [ext_resource type="Script" uid="uid://c4q8abllavwel" path="res://Shooter/Shooter.gd" id="1_eb6ym"]
-[ext_resource type="Texture2D" uid="uid://c36i5oapt0vp1" path="res://Shooter/shuriken_1.png" id="2_eb6ym"]
+[ext_resource type="Texture2D" uid="uid://c3h1bbqs1p6ap" path="res://Bullets/Types/shuriken_1.png" id="2_eb6ym"]
 
 [node name="Shooter" type="Node2D" unique_id=806875647 node_paths=PackedStringArray("_wandVisual", "_wandExitPoint")]
 script = ExtResource("1_eb6ym")
