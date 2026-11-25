@@ -4,10 +4,10 @@ extends CharacterBody2D
 
 @export var size: float = 1
 @export var speed: float = 150
-@export var baseDamage: float = 5
 var maxHitCount: int = 1
 var _hitCount: int = 0
 var _mySource: Node
+var hitData: HitInfo
 
 @onready var hitBox: HitboxComponent = $HitboxComponent
 @onready var hurtBox: HurtboxComponent = $HurtboxComponent
@@ -39,9 +39,10 @@ func GetTeam(hurt: HurtboxComponent) -> IdentityComponent.Kind:
 func IsProjectile(hurt: HurtboxComponent) -> bool:
 	return hurt.OwnerIdentity != null and hurt.OwnerIdentity.kind == IdentityComponent.Kind.PROJECTILE
 
-func SetUp(damage: float, mask: int, source: Node):
-	baseDamage = damage
+func SetUp(mask: int, hit: HitInfo):
+	hitData = hit
 	hitBox.SetUp(mask)
-	_mySource = source
-	sourceIdentity = source.get_node("IdentityComponent").kind
-	maxHitCount = 2 + floori(damage / 3)
+	_mySource = hit.Source
+	hit.Attacker = self
+	sourceIdentity = _mySource.get_node("IdentityComponent").kind
+	#maxHitCount = 4 + floori(hit.damage / 3)

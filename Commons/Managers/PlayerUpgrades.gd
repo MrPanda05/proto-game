@@ -5,10 +5,15 @@ extends Node
 @export
 var _stacks: Dictionary[StringName, int] = {}
 
+@export
+var Upgrades: Array[BaseUpgrade]
+
 func _ready() -> void:
 	GameManager.GameEventBus.OnUpgradePicked.connect(Add)
 
 func Add(upgrade: BaseUpgrade) -> void:
+	if(!Upgrades.has(upgrade)):
+		Upgrades.append(upgrade)
 	_stacks[upgrade.id] = GetStacks(upgrade.id) + 1
 
 func GetStacks(id: StringName) -> int:
@@ -16,3 +21,4 @@ func GetStacks(id: StringName) -> int:
 
 func Clear() -> void:
 	_stacks.clear()
+	Upgrades.clear()

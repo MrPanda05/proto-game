@@ -60,11 +60,17 @@ func RecomputeJump():
 func PausePlayer():
 	playerStates = States.PAUSED
 
+
 func ReturnPlayer(upgrade: BaseUpgrade):
 	upgrade.ApplyUpgradeStats(self)
-	Wand.SetUpShooter(Stats.fireRate, Stats.fireRatePercent, Stats.damage, (1<<0)|(1<<1)|(1<<3))
+	#Create something that will generate the correct hitinfo
+	var damageData: HitInfo = HitInfo.new()
+	damageData.damage = Stats.damage
+	damageData.Source = self
+	damageData.Upgrades = GameManager.UpgradeHolder.Upgrades
+	Wand.SetUpShooter(Stats.fireRate, Stats.fireRatePercent, damageData, (1<<0)|(1<<1)|(1<<3))
 	playerStates = States.PLAYING
-	
+
 func PlayerDeath():
 	playerStates = States.DEAD
 	
@@ -125,15 +131,12 @@ func Movement(state: PhysicsDirectBodyState2D) -> void:
 			var collider := state.get_contact_collider_object(i)
 			if collider is StaticBody2D and collider.is_in_group("OneWays"):
 				_isOnOneWay = true
-
 	# Landing resets (vel.y >= 0 so we don't reset on the frame we leave the ground)
 	if _isOnFloor and vel.y >= 0.0:
 		_hasJumped = false
 		_jumpCount = 0
-
 	# Gravity
 	vel.y += GetGravity(vel.y) * state.step
-
 	# Jump
 	if _jumpInput:
 		if _jumpCount < Stats.maxJumps:
@@ -144,7 +147,6 @@ func Movement(state: PhysicsDirectBodyState2D) -> void:
 
 	# Horizontal movement
 	vel.x = _horizontalInput * Stats.speed * Stats.speedPercent
-
 	state.linear_velocity = vel
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
@@ -161,4 +163,8 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 
 func OnStart() -> void:
-	Wand.SetUpShooter(Stats.fireRate, Stats.fireRatePercent, Stats.damage, (1<<0)|(1<<1)|(1<<3))
+	#Create something that will generate the correct hitinfo
+	var damageData: HitInfo = HitInfo.new()
+	damageData.damage = Stats.damage
+	damageData.Source = self
+	Wand.SetUpShooter(Stats.fireRate, Stats.fireRatePercent, damageData, (1<<0)|(1<<1)|(1<<3))

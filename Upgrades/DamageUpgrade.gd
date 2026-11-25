@@ -3,7 +3,7 @@ extends BaseUpgrade
 
 @export var value: float
 
-func AddComponent():
+func AddComponent(entity: Node2D):
 	pass
 
 func ApplyUpgradeStats(entity: Node2D):

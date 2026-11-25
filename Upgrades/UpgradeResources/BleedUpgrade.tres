@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BleedUpgrade" format=3 uid="uid://cfjwsauxbekem"]
+
+[ext_resource type="PackedScene" uid="uid://snphvs5kwp42" path="res://Commons/Components/BleedComponent.tscn" id="1_coshb"]
+[ext_resource type="Script" uid="uid://crmabqvaqbjei" path="res://Upgrades/BleedUpgrade.gd" id="1_twvyp"]
+
+[resource]
+script = ExtResource("1_twvyp")
+BleedNode = ExtResource("1_coshb")
+upgradeName = "Bleed upgrade"
+upgradeDescription = "Adds bleeding"
+rarity = 1
+id = &"6"
+metadata/_custom_type_script = "uid://crmabqvaqbjei"

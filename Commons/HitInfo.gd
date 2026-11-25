@@ -8,3 +8,5 @@ var superCrict: bool = false
 var Source:Node
 ## The one that actually called hurtbox.DoDamage(), with the example above, bullet would be damage Source
 var Attacker: Node
+
+var Upgrades: Array[BaseUpgrade]

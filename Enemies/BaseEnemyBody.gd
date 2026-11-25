@@ -51,7 +51,11 @@ func _ready() -> void:
 	Brain = get_node_or_null("Brain")
 	if Brain == null:
 		printerr("NO BRAIN")
-	_wand.SetUpShooter(Data.fireRate, Data.fireRatePercent, Data.damage, (1<<0)|(1<<2)|(1<<3))
+	#Create something that will generate the correct hitinfo
+	var damageData: HitInfo = HitInfo.new()
+	damageData.damage = Data.damage
+	damageData.Source = self
+	_wand.SetUpShooter(Data.fireRate, Data.fireRatePercent, damageData, (1<<0)|(1<<2)|(1<<3))
 
 func _physics_process(_delta: float) -> void:
 	queue_redraw()

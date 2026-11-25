@@ -6,15 +6,14 @@ var _direction: Vector2
 func OnContact(hurt: HurtboxComponent):
 	if(!CanDoDamage(hurt)): return
 	if(IsProjectile(hurt)):
-		_hitCount += 1
-		if(_hitCount >= maxHitCount):
-			queue_free()
+		#_hitCount += 1
+		#if(_hitCount >= maxHitCount):
+			#queue_free()
+		pass
 	else:
-		var data: HitInfo = HitInfo.new()
-		data.damage = baseDamage
-		data.Source = _mySource if is_instance_valid(_mySource) else null
-		data.Attacker = self
-		hurt.DoDamage(data)
+		for i in hitData.Upgrades:
+			i.AddComponent(hurt.get_parent())
+		hurt.DoDamage(hitData)
 		queue_free()
 
 func Move(dir: Vector2):

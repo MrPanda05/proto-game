@@ -3,11 +3,11 @@ extends BaseUpgrade
 
 @export var value: float
 
-func AddComponent():
+func AddComponent(entity: Node2D):
 	pass
 
 func ApplyUpgradeStats(entity: Node2D):
 	for child in entity.get_children():
 		var stats := child as StatsComponent
 		if stats == null: continue
-		stats.SetFireRate(stats.fireRatePercent + value)
+		stats.SetFireRatePercent(stats.fireRatePercent + value)

@@ -11,8 +11,10 @@ func CheckGlobalState():
 		visible = true
 func OnRetryButtonButtonDown() -> void:
 	GameManager.CurrentState = GameManager.States.PLAYING
+	GameManager.UpgradeHolder.Clear()
 	get_tree().reload_current_scene()
 
 
 func OnQuitButtonButtonDown() -> void:
+	GameManager.UpgradeHolder.Clear()
 	get_tree().change_scene_to_file("res://Levels/MainMenu.tscn")

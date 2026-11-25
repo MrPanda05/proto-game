@@ -9,4 +9,5 @@ value = 0.1
 icon = ExtResource("1_h3yww")
 upgradeName = "Speed Upgrade"
 upgradeDescription = "Gains +10% move speed"
+id = &"5"
 metadata/_custom_type_script = "uid://dq7adijtgfqxq"

@@ -13,7 +13,7 @@ extends Resource
 ## Tries to modify the stats of the entity
 @abstract func ApplyUpgradeStats(entity: Node2D)
 ## Tries to add a component to the entity
-@abstract func AddComponent()
+@abstract func AddComponent(entity: Node2D)
 
 func GetStats(entity: Node) -> StatsComponent:
 	for child in entity.get_children():

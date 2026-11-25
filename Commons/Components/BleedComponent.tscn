@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://snphvs5kwp42"]
+
+[ext_resource type="Script" uid="uid://u36lxsjr1ibu" path="res://Commons/Components/BleedComponent.gd" id="1_hy1ca"]
+
+[node name="BleedComponent" type="Node" unique_id=1663693810]
+script = ExtResource("1_hy1ca")
+bleedDamage = 2.5
+
+[node name="TickTime" type="Timer" parent="." unique_id=1776231378]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="StopTicking" type="Timer" parent="." unique_id=1375080656]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="TickTime" to="." method="OnTimerTimeout"]
+[connection signal="timeout" from="StopTicking" to="." method="OnStopTickingTimeout"]
