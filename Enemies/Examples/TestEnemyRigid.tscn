@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://ddx5xekklev4l" path="res://Enemies/Stats/TestEnemy.tres" id="4_ef8el"]
 [ext_resource type="Script" uid="uid://cckfpfxh6pi5u" path="res://Commons/UI/HealthUI.gd" id="5_6fwj5"]
 [ext_resource type="PackedScene" uid="uid://dx01pdu4xek54" path="res://Shooter/Shooter.tscn" id="6_76gp1"]
-[ext_resource type="PackedScene" uid="uid://cnpeukp37s070" path="res://Bullets/Types/BasicBullet.tscn" id="7_jaj7a"]
+[ext_resource type="PackedScene" uid="uid://dvms0gd0no78a" path="res://Bullets/Types/NormalProjectile.tscn" id="8_7bmon"]
 
 [node name="TestEnemyRigid" unique_id=1320595226 node_paths=PackedStringArray("Data") instance=ExtResource("1_hh4sj")]
 Data = NodePath("EnemyStatsComponents")
@@ -53,7 +53,7 @@ _healthValues = NodePath("../../DebugHealth")
 _healthComponent = NodePath("../../HealthComponent")
 
 [node name="Shooter" parent="." index="9" unique_id=806875647 instance=ExtResource("6_76gp1")]
-BulletScene = ExtResource("7_jaj7a")
+BulletScene = ExtResource("8_7bmon")
 
 [node name="WandVisual" parent="Shooter" index="0" unique_id=1589346860]
 visible = false

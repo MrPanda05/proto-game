@@ -9,4 +9,5 @@ value = 10.0
 icon = ExtResource("1_e2hqh")
 upgradeName = "Health Upgrade"
 upgradeDescription = "Gains +10 max health"
+id = &"4"
 metadata/_custom_type_script = "uid://dq7adijtgfqxq"

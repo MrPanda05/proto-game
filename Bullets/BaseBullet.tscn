@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://d0uide6srbo2w" path="res://icon.svg" id="1_gcn5v"]
 [ext_resource type="PackedScene" uid="uid://bmpmrsten4786" path="res://Commons/Components/HitboxComponent.tscn" id="2_yd5oh"]
+[ext_resource type="PackedScene" uid="uid://bjt4qk66gg8ly" path="res://Commons/Components/HurtboxComponent.tscn" id="3_eswr7"]
+[ext_resource type="PackedScene" uid="uid://m255xhaki02v" path="res://Commons/Components/IdentityComponent.tscn" id="4_67lqb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mgtjl"]
 radius = 16.0
@@ -19,7 +21,14 @@ shape = SubResource("CircleShape2D_mgtjl")
 
 [node name="HitboxComponent" parent="." unique_id=709588686 instance=ExtResource("2_yd5oh")]
 
+[node name="HurtboxComponent" parent="." unique_id=995218557 node_paths=PackedStringArray("OwnerIdentity") instance=ExtResource("3_eswr7")]
+collision_layer = 8
+OwnerIdentity = NodePath("../IdentityComponent")
+
 [node name="Timer" type="Timer" parent="." unique_id=886610340]
 wait_time = 8.0
 one_shot = true
 autostart = true
+
+[node name="IdentityComponent" parent="." unique_id=989742169 instance=ExtResource("4_67lqb")]
+kind = 2

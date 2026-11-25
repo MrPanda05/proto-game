@@ -3,8 +3,11 @@ extends BaseUpgrade
 
 @export var value: float
 
+func AddComponent():
+	pass
+
 func ApplyUpgradeStats(entity: Node2D):
 	for child in entity.get_children():
-		if is_instance_of(child, StatsComponent):
-			print("More damage")
-			child.damage += value
+		var stats := child as StatsComponent
+		if stats == null: continue
+		stats.SetDamage(stats.damage + value)

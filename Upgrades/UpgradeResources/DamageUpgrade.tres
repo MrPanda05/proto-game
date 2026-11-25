@@ -9,4 +9,5 @@ value = 5.0
 icon = ExtResource("1_4b3ao")
 upgradeName = "Damage upgrade"
 upgradeDescription = "Gains +5 damage"
+id = &"1"
 metadata/_custom_type_script = "uid://dq7adijtgfqxq"

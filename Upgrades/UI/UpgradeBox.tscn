@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://d033mn56a3j5k"]
 
+[ext_resource type="Theme" uid="uid://dbwdrtwtashgx" path="res://Themes/UpgradeBorder.tres" id="1_1ebhi"]
 [ext_resource type="Texture2D" uid="uid://ce7dpb88id1n3" path="res://3.png" id="1_dr4oc"]
 [ext_resource type="Script" uid="uid://q7hrep1wu6m" path="res://Upgrades/UI/UpgradeBox.gd" id="1_i8mk6"]
 [ext_resource type="Resource" uid="uid://dxcm4gqgsaeje" path="res://Upgrades/UpgradeResources/FireRateUpgrade.tres" id="2_kh6bn"]
+[ext_resource type="Theme" uid="uid://umf8ka1cduj5" path="res://Themes/UpgradeImageBorder.tres" id="4_3kwmh"]
 
 [node name="UpgradeBox" type="PanelContainer" unique_id=13141202]
 custom_minimum_size = Vector2(0, 450)
@@ -12,6 +14,7 @@ offset_bottom = 384.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+theme = ExtResource("1_1ebhi")
 script = ExtResource("1_i8mk6")
 currentUpgrade = ExtResource("2_kh6bn")
 
@@ -39,11 +42,21 @@ size_flags_vertical = 6
 text = "UpgradeName"
 horizontal_alignment = 1
 
-[node name="UpgradeImage" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1264799888]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=1951214388]
 custom_minimum_size = Vector2(200, 200)
 custom_maximum_size = Vector2(200, 300)
-clip_contents = true
 layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("4_3kwmh")
+
+[node name="UpgradeImage" type="TextureRect" parent="MarginContainer/VBoxContainer/Panel" unique_id=1264799888]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 mouse_filter = 2
 texture = ExtResource("1_dr4oc")

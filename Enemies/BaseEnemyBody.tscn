@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://csuiq0w401ijs" path="res://Commons/Components/HealthComponent.tscn" id="4_825eh"]
 [ext_resource type="PackedScene" uid="uid://bjt4qk66gg8ly" path="res://Commons/Components/HurtboxComponent.tscn" id="5_u6wwo"]
 [ext_resource type="PackedScene" uid="uid://bmpmrsten4786" path="res://Commons/Components/HitboxComponent.tscn" id="6_8pesl"]
+[ext_resource type="PackedScene" uid="uid://m255xhaki02v" path="res://Commons/Components/IdentityComponent.tscn" id="7_1ve0s"]
 [ext_resource type="PackedScene" uid="uid://d1jwfyfsgd00b" path="res://Enemies/Stats/EnemyStatsComponents.tscn" id="7_woc7i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oxnru"]
@@ -43,9 +44,8 @@ debug_color = Color(0.9540116, 0, 0.5531309, 0.41960785)
 
 [node name="HealthComponent" parent="." unique_id=920714907 instance=ExtResource("4_825eh")]
 
-[node name="HurtboxComponent" parent="." unique_id=995218557 instance=ExtResource("5_u6wwo")]
-collision_layer = 0
-collision_mask = 0
+[node name="HurtboxComponent" parent="." unique_id=995218557 node_paths=PackedStringArray("OwnerIdentity") instance=ExtResource("5_u6wwo")]
+OwnerIdentity = NodePath("../IdentityComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1099820645]
 position = Vector2(-0.5, 0)
@@ -53,7 +53,6 @@ shape = SubResource("RectangleShape2D_4usca")
 
 [node name="HitboxComponent" parent="." unique_id=709588686 instance=ExtResource("6_8pesl")]
 collision_layer = 2
-collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=915169655]
 position = Vector2(-1, 0.5)
@@ -61,5 +60,8 @@ shape = SubResource("RectangleShape2D_8pesl")
 debug_color = Color(0, 0.63378006, 0.4401745, 0.41960785)
 
 [node name="EnemyStatsComponents" parent="." unique_id=643283664 instance=ExtResource("7_woc7i")]
+
+[node name="IdentityComponent" parent="." unique_id=989742169 instance=ExtResource("7_1ve0s")]
+kind = 1
 
 [connection signal="ready" from="." to="." method="OnStart"]

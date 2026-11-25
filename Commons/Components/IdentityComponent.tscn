@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://m255xhaki02v"]
+
+[ext_resource type="Script" uid="uid://bxvpl3tkl82a7" path="res://Commons/Components/IdentityComponent.gd" id="1_v1gfj"]
+
+[node name="IdentityComponent" type="Node" unique_id=989742169]
+script = ExtResource("1_v1gfj")

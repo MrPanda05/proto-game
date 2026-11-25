@@ -4,10 +4,10 @@ extends Area2D
 
 signal OnAttackHit(hurtbox: HurtboxComponent)
 
-## Set up of the hitbox
+## Set up of the hitbox to see what it will detect
 ## (1 << 0) | (1 << 2)
-func SetUp(layer: int, mask: int):
-	collision_layer = layer
+func SetUp(mask: int):
+	collision_layer = 0
 	collision_mask = mask
 
 

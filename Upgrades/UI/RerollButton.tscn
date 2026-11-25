@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://bm1suo0cbvpym"]
 
 [ext_resource type="Script" uid="uid://5d15idh07aoi" path="res://Upgrades/UI/RerollButton.gd" id="1_f4oce"]
+[ext_resource type="Theme" uid="uid://dbwdrtwtashgx" path="res://Themes/UpgradeBorder.tres" id="1_n7cw1"]
 [ext_resource type="Texture2D" uid="uid://ct2mjagdkjwl5" path="res://Upgrades/UpgradeImages/rerollnew.png" id="2_nr88l"]
+[ext_resource type="Theme" uid="uid://umf8ka1cduj5" path="res://Themes/UpgradeImageBorder.tres" id="3_ndb7a"]
 
 [node name="RerollButton" type="PanelContainer" unique_id=1407519083]
 custom_minimum_size = Vector2(0, 450)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+theme = ExtResource("1_n7cw1")
 script = ExtResource("1_f4oce")
 
 [node name="Button" type="Button" parent="." unique_id=741255125]
@@ -34,11 +37,21 @@ size_flags_vertical = 6
 text = "Reroll"
 horizontal_alignment = 1
 
-[node name="UpgradeImage" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1649182239]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=908922457]
 custom_minimum_size = Vector2(200, 200)
 custom_maximum_size = Vector2(200, 300)
-clip_contents = true
 layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("3_ndb7a")
+
+[node name="UpgradeImage" type="TextureRect" parent="MarginContainer/VBoxContainer/Panel" unique_id=1649182239]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 mouse_filter = 2
 texture = ExtResource("2_nr88l")

@@ -1,6 +1,6 @@
 ## Event bus for gameplay scene
 class_name  GameplayBus
-extends Node
+extends Resource
 
 
 signal OnGameStart

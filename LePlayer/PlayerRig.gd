@@ -62,7 +62,7 @@ func PausePlayer():
 
 func ReturnPlayer(upgrade: BaseUpgrade):
 	upgrade.ApplyUpgradeStats(self)
-	Wand.SetUpShooter(Stats.fireRate, Stats.fireRatePercent, Stats.damage, 2)
+	Wand.SetUpShooter(Stats.fireRate, Stats.fireRatePercent, Stats.damage, (1<<0)|(1<<1)|(1<<3))
 	playerStates = States.PLAYING
 	
 func PlayerDeath():
@@ -161,4 +161,4 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 
 func OnStart() -> void:
-	Wand.SetUpShooter(Stats.fireRate, Stats.fireRatePercent, Stats.damage, 1<<1)
+	Wand.SetUpShooter(Stats.fireRate, Stats.fireRatePercent, Stats.damage, (1<<0)|(1<<1)|(1<<3))

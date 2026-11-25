@@ -3,6 +3,9 @@ extends BaseUpgrade
 
 @export var value: float
 
+func AddComponent():
+	pass
+
 func ApplyUpgradeStats(entity: Node2D):
 	var newValue: float = 0;
 	var statsComp: StatsComponent
@@ -12,9 +15,5 @@ func ApplyUpgradeStats(entity: Node2D):
 			statsComp = child
 		if is_instance_of(child, HealthComponent):
 				healthComp = child
-	print("Damaged")
-	print(statsComp.damage)
-	print(statsComp.maxHealth)
-	statsComp.maxHealth += value
-	print(statsComp.maxHealth)
+	statsComp.SetMaxHealth(statsComp.maxHealth + value)
 	healthComp.SetUp(statsComp.maxHealth, true)

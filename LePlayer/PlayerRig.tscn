@@ -3,12 +3,13 @@
 [ext_resource type="Script" uid="uid://bfgfj5twuedkn" path="res://LePlayer/PlayerRig.gd" id="1_je4v8"]
 [ext_resource type="Texture2D" uid="uid://7k83yqlaflsx" path="res://LePlayer/NEWNINJA.png" id="2_kq8y8"]
 [ext_resource type="PackedScene" uid="uid://dx01pdu4xek54" path="res://Shooter/Shooter.tscn" id="3_rga63"]
-[ext_resource type="PackedScene" uid="uid://cnpeukp37s070" path="res://Bullets/Types/BasicBullet.tscn" id="4_cu106"]
+[ext_resource type="PackedScene" uid="uid://dvms0gd0no78a" path="res://Bullets/Types/NormalProjectile.tscn" id="4_0ax1n"]
 [ext_resource type="PackedScene" uid="uid://d0keqspt04wdy" path="res://LePlayer/Stats/PlayerStatsComponent.tscn" id="5_nkmgg"]
 [ext_resource type="Resource" uid="uid://b748vkg5vu6md" path="res://LePlayer/Stats/PlayerStats.tres" id="6_b5mcu"]
 [ext_resource type="PackedScene" uid="uid://csuiq0w401ijs" path="res://Commons/Components/HealthComponent.tscn" id="7_v4b04"]
 [ext_resource type="Theme" uid="uid://ctcwig8mijnyb" path="res://Themes/HealthSliderTheme.tres" id="8_2yrgb"]
 [ext_resource type="Script" uid="uid://cckfpfxh6pi5u" path="res://Commons/UI/HealthUI.gd" id="8_q6m1s"]
+[ext_resource type="PackedScene" uid="uid://m255xhaki02v" path="res://Commons/Components/IdentityComponent.tscn" id="10_0ax1n"]
 [ext_resource type="PackedScene" uid="uid://bjt4qk66gg8ly" path="res://Commons/Components/HurtboxComponent.tscn" id="10_kq8y8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a28d8"]
@@ -45,7 +46,7 @@ shape = SubResource("CapsuleShape2D_ydr4y")
 
 [node name="Shooter" parent="." unique_id=806875647 instance=ExtResource("3_rga63")]
 position = Vector2(19, 10)
-BulletScene = ExtResource("4_cu106")
+BulletScene = ExtResource("4_0ax1n")
 
 [node name="PlayerStatsComponent" parent="." unique_id=1060335031 instance=ExtResource("5_nkmgg")]
 referenceStats = ExtResource("6_b5mcu")
@@ -105,11 +106,14 @@ text = "100/100"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HurtboxComponent" parent="." unique_id=995218557 instance=ExtResource("10_kq8y8")]
+[node name="HurtboxComponent" parent="." unique_id=995218557 node_paths=PackedStringArray("OwnerIdentity") instance=ExtResource("10_kq8y8")]
 collision_layer = 4
+OwnerIdentity = NodePath("../IdentityComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1419391085]
 position = Vector2(1, 2.5)
 shape = SubResource("RectangleShape2D_4usca")
+
+[node name="IdentityComponent" parent="." unique_id=989742169 instance=ExtResource("10_0ax1n")]
 
 [connection signal="ready" from="." to="." method="OnStart"]

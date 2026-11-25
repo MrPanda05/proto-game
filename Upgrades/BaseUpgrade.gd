@@ -8,5 +8,15 @@ extends Resource
 @export var upgradeDescription: String
 ## 0 - COMMON, 1 - UNCOMMON, 2 - EPIC
 @export var rarity: int
-@abstract
-func ApplyUpgradeStats(entity: Node2D)
+@export var id: StringName
+
+## Tries to modify the stats of the entity
+@abstract func ApplyUpgradeStats(entity: Node2D)
+## Tries to add a component to the entity
+@abstract func AddComponent()
+
+func GetStats(entity: Node) -> StatsComponent:
+	for child in entity.get_children():
+		if child is StatsComponent:
+			return child as StatsComponent
+	return null

@@ -10,7 +10,7 @@ var _allUpgrades: Array[UpgradeBox]
 func _ready() -> void:
 	if(_waveManager == null): return
 	visible = false
-	_waveManager.OnWaveEnded.connect(ShowUpgrades)
+	GameManager.GameEventBus.OnWaveEnded.connect(ShowUpgrades)
 	_rerollButton.OnRerollClicked.connect(RedoUpgrade)
 	const path = "res://Upgrades/UpgradeResources/"
 	for file_name in ResourceLoader.list_directory(path):
@@ -30,7 +30,7 @@ func RollUpgrades() -> void:
 		card.updateUpgrade()
 
 func UpgradedPicked(upgrade: BaseUpgrade):
-	GameManager.GameEventBus.OnUpgradePicked.emit(upgrade)
+	GameManager.RaiseUpgradeEvent(upgrade)
 	GameManager.CurrentState = GameManager.States.PLAYING
 	visible = false
 

@@ -15,7 +15,7 @@ var target: PlayerRig
 
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("Player")
-	_waveManager.connect("OnWaveStarted", Spawn)
+	GameManager.GameEventBus.OnWaveStarted.connect(Spawn)
 
 func OnEnemyDeath():
 	_currentEnemies -= 1

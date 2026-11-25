@@ -5,18 +5,14 @@ enum States { MENU, PLAYING, PAUSED, UPGRADE, GAMEOVER }
 
 signal OnStateChanged
 
-var GameEventBus: GameplayBus
-@export var _gamePlayBusScene: PackedScene
+@export var GameEventBus: GameplayBus
 @export var CurrentState: States
 
-func CreateGameBus():
-	GameEventBus = _gamePlayBusScene.instantiate()
-	add_child(GameEventBus)
-
-
-func DestroyGameBus():
-	GameEventBus.queue_free()
+@onready var UpgradeHolder: PlayerUpgrades = $PlayerUpgrades
 
 func ChangeState(newState: States):
 	CurrentState = newState
 	OnStateChanged.emit()
+
+func RaiseUpgradeEvent(upgradedPicked: BaseUpgrade):
+	GameEventBus.OnUpgradePicked.emit(upgradedPicked)

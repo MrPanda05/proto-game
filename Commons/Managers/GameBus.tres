@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GameplayBus" format=3 uid="uid://dotwxcwjq7id3"]
+
+[ext_resource type="Script" uid="uid://cj6py63wdr535" path="res://Commons/Managers/GameplayBus.gd" id="1_qy17s"]
+
+[resource]
+script = ExtResource("1_qy17s")
+metadata/_custom_type_script = "uid://cj6py63wdr535"

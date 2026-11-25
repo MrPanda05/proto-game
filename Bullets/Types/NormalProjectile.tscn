@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dvms0gd0no78a"]
+
+[ext_resource type="PackedScene" uid="uid://b8rt3b1yhhets" path="res://Bullets/BaseBullet.tscn" id="1_23vjn"]
+[ext_resource type="Script" uid="uid://bxa0eq5teesvt" path="res://Bullets/Types/NormalProjectile.gd" id="2_cv0jf"]
+[ext_resource type="Texture2D" uid="uid://c3h1bbqs1p6ap" path="res://Shooter/shuriken_1.png" id="3_yjiue"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mgtjl"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yjiue"]
+radius = 16.0
+
+[node name="NormalProjectile" unique_id=1796345112 instance=ExtResource("1_23vjn")]
+script = ExtResource("2_cv0jf")
+speed = 350.0
+
+[node name="Icon" parent="." index="0" unique_id=408559351]
+scale = Vector2(1, 1)
+texture = ExtResource("3_yjiue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" parent_id_path=PackedInt32Array(709588686) index="0" unique_id=611286271]
+shape = SubResource("CircleShape2D_mgtjl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" parent_id_path=PackedInt32Array(995218557) index="0" unique_id=2118786820]
+scale = Vector2(1.003952, 1)
+shape = SubResource("CircleShape2D_yjiue")

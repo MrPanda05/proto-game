@@ -10,8 +10,6 @@ func CheckGlobalState():
 	if(GameManager.CurrentState == GameManager.States.GAMEOVER):
 		visible = true
 func OnRetryButtonButtonDown() -> void:
-	GameManager.DestroyGameBus()
-	GameManager.CreateGameBus()
 	GameManager.CurrentState = GameManager.States.PLAYING
 	get_tree().reload_current_scene()
 

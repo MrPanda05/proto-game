@@ -4,6 +4,7 @@ extends Area2D
 
 @export var _hasImunityFrames: bool = false
 @export var _maxImunityFrames: int = 5
+@export var OwnerIdentity: IdentityComponent
 
 var _imunityFramesCount: int = 0
 var IsOnIframes: bool = false
