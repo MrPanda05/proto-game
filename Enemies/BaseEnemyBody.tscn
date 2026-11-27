@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://s30ahw4c0opb"]
 
 [ext_resource type="Script" uid="uid://j55ut6ffri3n" path="res://Enemies/BaseEnemyBody.gd" id="1_qvt2b"]
-[ext_resource type="Texture2D" uid="uid://d0uide6srbo2w" path="res://icon.svg" id="3_oxnru"]
+[ext_resource type="Texture2D" uid="uid://co1yu1owjf47k" path="res://Enemies/enemy_1.png" id="2_woc7i"]
 [ext_resource type="PackedScene" uid="uid://csuiq0w401ijs" path="res://Commons/Components/HealthComponent.tscn" id="4_825eh"]
 [ext_resource type="PackedScene" uid="uid://bjt4qk66gg8ly" path="res://Commons/Components/HurtboxComponent.tscn" id="5_u6wwo"]
 [ext_resource type="PackedScene" uid="uid://bmpmrsten4786" path="res://Commons/Components/HitboxComponent.tscn" id="6_8pesl"]
@@ -34,8 +34,8 @@ script = ExtResource("1_qvt2b")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=29351939]
 position = Vector2(-0.5, 0)
-scale = Vector2(0.16406249, 1)
-texture = ExtResource("3_oxnru")
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_woc7i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1172801119]
 position = Vector2(0, -0.5)

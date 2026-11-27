@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c7elqjdqm6c6l"]
 
 [ext_resource type="Script" uid="uid://bfgfj5twuedkn" path="res://LePlayer/PlayerRig.gd" id="1_je4v8"]
-[ext_resource type="Texture2D" uid="uid://7k83yqlaflsx" path="res://LePlayer/NEWNINJA.png" id="2_kq8y8"]
+[ext_resource type="Texture2D" uid="uid://b42lwkq7agb6g" path="res://LePlayer/NEWNINJA2.png" id="2_0ax1n"]
 [ext_resource type="PackedScene" uid="uid://dx01pdu4xek54" path="res://Shooter/Shooter.tscn" id="3_rga63"]
 [ext_resource type="PackedScene" uid="uid://dvms0gd0no78a" path="res://Bullets/Types/NormalProjectile.tscn" id="4_0ax1n"]
 [ext_resource type="PackedScene" uid="uid://d0keqspt04wdy" path="res://LePlayer/Stats/PlayerStatsComponent.tscn" id="5_nkmgg"]
@@ -38,14 +38,14 @@ script = ExtResource("1_je4v8")
 playerStates = 1
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1049500892]
-scale = Vector2(3.095, 3.095)
-texture = ExtResource("2_kq8y8")
+scale = Vector2(1.548, 1.548)
+texture = ExtResource("2_0ax1n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1956739146]
 shape = SubResource("CapsuleShape2D_ydr4y")
 
 [node name="Shooter" parent="." unique_id=806875647 instance=ExtResource("3_rga63")]
-position = Vector2(19, 10)
+position = Vector2(21, 20)
 BulletScene = ExtResource("4_0ax1n")
 
 [node name="PlayerStatsComponent" parent="." unique_id=1060335031 instance=ExtResource("5_nkmgg")]
