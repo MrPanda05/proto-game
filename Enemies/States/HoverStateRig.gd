@@ -12,9 +12,6 @@ func Enter() -> void:
 	)
 
 func FixUpdate(delta: float) -> void:
-	if(enemy._wand != null):
-		await get_tree().create_timer(randf_range(.5, 2)).timeout
-		enemy._wand.Shoot(enemy.target.global_position - enemy.global_position)
 	if not is_instance_valid(enemy.target):
 		enemy.desiredVelocity = Vector2.ZERO
 		return

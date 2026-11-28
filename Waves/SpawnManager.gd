@@ -34,6 +34,6 @@ func Spawn(currentWave: int):
 		instance.freeze = false
 		_waveManager.get_parent().add_child(instance)
 		_currentEnemies += 1
-		instance.global_position = _spawnPoint.global_position
+		instance.global_position = _spawnPoint.global_position + Vector2(randf_range(-400, 400), 0.0)
 		instance.connect("OnDeath", OnEnemyDeath)
 		instance._healthComponent.SetUp(instance._healthComponent.maxHealth * _waveManager.currentWave, true)
